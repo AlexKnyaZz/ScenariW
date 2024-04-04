@@ -228,7 +228,6 @@ package alex.knyazz.myapplication;
         /*int idd = v.getId();
         System.out.println("idd = "+ idd);*/
 
-
         }
 
         public void addCurrent(String s) {
