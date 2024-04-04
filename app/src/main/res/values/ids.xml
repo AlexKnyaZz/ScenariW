@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="_bg__frame_3" type="id" />
+    <item name="shape_with_text_ek10" type="id" />
+    <item name="shape_with_text_ek11" type="id" />
+    <item name="shape_with_text_ek12" type="id" />
+    <item name="__________________ivan293_" type="id" />
+    <item name="shape_with_text_ek13" type="id" />
+    <item name="______________" type="id" />
+    <item name="_bg___frame_7_ek1" type="id" />
+    <item name="shape_with_text_ek14" type="id" />
+    <item name="shape_with_text_ek15" type="id" />
+    <item name="shape_with_text_ek16" type="id" />
+    <item name="shape_with_text_ek17" type="id" />
+    <item name="_bg__frame_15_ek1" type="id" />
+    <item name="shape_with_text_ek18" type="id" />
+    <item name="___________" type="id" />
+    <item name="__" type="id" />
+    <item name="Create" type="id" />
+    <item name="Return" type="id" />
+    <item name="Scenarious" type="id" />
+    <item name="CreateNew" type="id" />
+    <item name="CreateWLink" type="id" />
+    <item name="auto_complete_txt" type="id" />
+    <item name="scenName" type="id" />
+    <item name="NameOfScene" type="id" />
+    <item name="TypeOfScene" type="id" />
+    <item name="TableRowSc" type="id" />
+    <item name="table" type="id" />
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/shape_with_"
+        android:src="@drawable/roundstyle"
+        android:layout_width="337dp"
+        android:layout_height="29dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:color="@color/ccc"
+        />
+
+
+
+
+</selector>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- authorisation strings -->
+
+	<string name="app_name">ScenariW</string>
+	<string name="ek_img_content">ExportKit Image</string>
+	<string name="login_string">Login</string>
+	<string name="Welcome_string">Welcome!\nSign in or sign up to continue.</string>
+	<string name="Welcome1_string">Log in or log up to continue.</string>
+
+	<string name="Password_string">Password</string>
+	<string name="AppName_string">ScenariW</string>
+	<string name="Reg_string"><u>Registration</u></string>
+	<string name="ivan293_string">Ivan293</string>
+	<string name="_________string">*******</string>
+	<string name="Enter_string">Log in</string>
+
+	<string name="Scenarious_string">Scenarious</string>
+	<string name="UserInfo_string">User Info</string>
+	<string name="Help_string">Help</string>
+	<string name="MainText_string">What are we doing today?</string>
+
+	<string name="WinScenarious">Scenarious</string>
+	<string name="Name">Name</string>
+	<string name="Type">Type</string>
+	<string name="Nothings">You have no any scenarious. Wanna create?</string>
+	<string name="Create">Create</string>
+	<string name="Return">Return</string>
+
+
+	<string name="Create1">Create new</string>
+	<string name="PN_create1">Creating new scenario</string>
+	<string name="Create1Other">Add other scenario or create yours?</string>
+	<string name="LinkEn">Enter your link</string>
+	<string name="CreateWLink">Create with link</string>
+
+	<string name="Create2Other">Select a type and your role</string>
+	<string name="Select">Select</string>
+	<string name="Role">Role</string>
+
+	<string name="ChooseView">Choose view</string>
+	<string name="SceneName">Scene</string>
+	<string name="DescriptionName">Description</string>
+	<string name="InFuture">Will be in the future</string>
+</resources>

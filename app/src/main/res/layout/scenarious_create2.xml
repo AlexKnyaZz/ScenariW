@@ -1,0 +1,274 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<!--
+	/*
+	 *	This content is generated from the API File Info.
+	 *	(Alt+Shift+Ctrl+I).
+	 *
+	 *	@desc
+	 *	@file 		authorisation
+	 *	@date 		Monday 25th of March 2024 09:59:09 AM
+	 *	@title 		Page 1
+	 *	@author
+	 *	@keywords
+	 *	@generator 	Export Kit v1.3.figma
+	 *
+	 */
+	-->
+	<ScrollView android:id="@+id/authorisation"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent" >
+
+		<RelativeLayout android:id="@+id/content_container"
+			android:layout_width="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="1.9dp"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			>
+
+
+
+
+			<RelativeLayout android:id="@+id/page_authorisation_ek1"
+				android:layout_marginTop="0dp"
+				android:layout_marginStart="0dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerHorizontal="true"
+				>
+
+				<View
+					android:id="@+id/_bg__authorisation_ek2"
+					android:layout_width="380dp"
+					android:layout_height="790dp"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:background="@drawable/_bg__authorisation_ek2_shape" />
+
+				<ImageView android:id="@+id/shape_with_text"
+					android:src="@drawable/shape_with_text"
+					android:contentDescription="shape_with_text"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_centerHorizontal="true"
+					android:layout_width="380dp"
+					android:layout_height="790dp" />
+
+
+
+				<ImageView
+					android:id="@+id/shape_with_text_ek2"
+					android:layout_width="337dp"
+					android:layout_height="245dp"
+					android:layout_marginStart="19dp"
+					android:layout_marginTop="190dp"
+					android:layout_centerHorizontal="true"
+					android:contentDescription="shape_with_text_ek2"
+					android:background="@drawable/roundstyle2"
+					android:backgroundTint="@color/ccc" />
+
+
+
+
+				<RelativeLayout android:id="@+id/frame_5"
+					android:layout_marginTop="630dp"
+					android:layout_marginStart="43dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					>
+
+
+					<Button
+						android:id="@+id/Create"
+						android:layout_width="337dp"
+						android:layout_height="40dp"
+						android:layout_centerHorizontal="true"
+
+						android:layout_marginStart="0dp"
+						android:layout_marginTop="0dp"
+						android:background="@drawable/roundstyle2"
+						android:backgroundTint="@color/bbb"
+						android:gravity="center"
+						android:onClick="startNewActivity"
+
+						android:text="@string/Create"
+						android:textAlignment="center"
+						android:textColor="@color/___________________________________________________________________color" />
+
+				</RelativeLayout>
+
+
+				<Button
+					android:id="@+id/Return"
+					android:layout_width="337dp"
+					android:layout_height="40dp"
+					android:layout_centerHorizontal="true"
+
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="690dp"
+					android:background="@drawable/roundstyle2"
+					android:backgroundTint="@color/bbb"
+					android:gravity="center"
+					android:onClick="toReturn"
+
+					android:text="@string/Return"
+					android:textAlignment="center"
+					android:textColor="@color/___________________________________________________________________color" />
+
+
+				<ImageView
+					android:layout_width="337dp"
+					android:layout_height="35dp"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="510dp"
+					android:background="@drawable/roundstyle"
+					android:backgroundTint="@color/ccc"
+					android:contentDescription="shape_with_text_ek1"
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+					/>
+
+				<com.google.android.material.textfield.TextInputLayout
+					android:layout_width="337dp"
+					android:layout_height="39dp"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="505dp"
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+					android:hint="@string/Role"
+					style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+					>
+
+					<AutoCompleteTextView
+						android:id="@+id/auto_complete_txt1"
+						android:layout_width="337dp"
+						android:layout_height="39dp"
+						android:inputType="none"
+						/>
+				</com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+				<ImageView
+					android:layout_width="337dp"
+					android:layout_height="35dp"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="565dp"
+					android:background="@drawable/roundstyle"
+					android:backgroundTint="@color/ccc"
+					android:contentDescription="shape_with_text_ek1"
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+					/>
+
+				<EditText
+					android:id="@+id/scenName"
+					android:layout_width="337dp"
+					android:layout_height="39dp"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="565dp"
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+					android:hint="@string/Name"
+					>
+				</EditText>
+
+
+
+				<ImageView
+					android:id="@+id/shape_with_text_ek1"
+					android:layout_width="337dp"
+					android:layout_height="35dp"
+					android:layout_marginStart="19dp"
+					android:layout_marginTop="455dp"
+					android:background="@drawable/roundstyle"
+					android:backgroundTint="@color/ccc"
+					android:contentDescription="shape_with_text_ek1"
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+					/>
+
+				<com.google.android.material.textfield.TextInputLayout
+					android:layout_width="337dp"
+					android:layout_height="39dp"
+					android:layout_marginStart="19dp"
+					android:layout_marginTop="450dp"
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+					android:hint="@string/Type"
+					style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+					>
+
+					<AutoCompleteTextView
+						android:id="@+id/auto_complete_txt"
+						android:layout_width="337dp"
+						android:layout_height="39dp"
+						android:inputType="none"
+						/>
+					</com.google.android.material.textfield.TextInputLayout>
+
+
+
+				<ImageView
+					android:id="@+id/shape_with_text_ek3"
+					android:layout_width="337dp"
+					android:layout_height="300dp"
+					android:layout_centerHorizontal="true"
+					android:layout_marginStart="19dp"
+					android:layout_marginTop="58dp"
+					android:background="@drawable/roundstyle2"
+					android:backgroundTint="@color/bbb"
+					android:contentDescription="shape_with_text_ek3"
+					android:src="@drawable/shape_with_text_ek3"
+					/>
+
+				<ImageView
+					android:layout_width="337dp"
+					android:layout_height="245dp"
+					android:layout_centerHorizontal="true"
+					android:layout_marginStart="19dp"
+					android:layout_marginTop="80dp"
+					android:contentDescription="shape_with_text_ek3"
+					android:src="@drawable/judicial_examination_svgrepo_com"
+					/>
+
+				<TextView android:id="@+id/__________________________________________________________________"
+					android:layout_centerHorizontal="true"
+					android:gravity="center"
+					android:textSize="10pt"
+					android:textColor="@color/___________________________________________________________________color"
+					android:layout_marginLeft="0dp"
+					android:layout_marginTop="360dp"
+					android:layout_width="330dp"
+					android:layout_height="69.4dp"
+					android:text="@string/Create2Other"
+
+					/>
+
+				<TextView android:id="@+id/___________________"
+					android:textSize="24sp"
+					android:textColor="@color/___________________________________________________________________color"
+					android:layout_marginLeft="59dp"
+					android:layout_marginTop="9dp"
+					android:layout_width="320dp"
+					android:layout_height="44.4dp"
+					android:text="@string/PN_create1"
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+					/>
+
+
+
+
+
+			</RelativeLayout>
+		</RelativeLayout>
+
+	</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ScenariW</string>
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="login_string">Логин</string>
+    <string name="Welcome_string">Добро пожаловать! Войдите или зарегистрируйтесь, чтобы продолжить.</string>
+    <string name="Welcome1_string">Log in or log up to continue.</string>
+    <string name="Password_string">Пароль</string>
+    <string name="AppName_string">ScenariW</string>
+    <string name="Reg_string">Зарегистрироваться</string>
+    <string name="ivan293_string">Ivan293</string>
+    <string name="_________string">*******</string>
+    <string name="Enter_string">Войти</string>
+    <string name="Scenarious_string">Сценарии</string>
+    <string name="UserInfo_string">Личный кабинет</string>
+    <string name="Help_string">Помощь</string>
+    <string name="MainText_string">Чем займёмся сегодня?</string>
+    <string name="WinScenarious">Сценарии</string>
+    <string name="Name">Название</string>
+    <string name="Type">Тип</string>
+    <string name="Nothings">У вас пока нет сценариев. Хотите создать?</string>
+    <string name="Create">Создать</string>
+    <string name="Return">Вернуться</string>
+    <string name="Create1">Создать новый</string>
+    <string name="PN_create1">Создание нового сценария</string>
+    <string name="Create1Other">Добавить сценарий или создать свой?</string>
+    <string name="LinkEn">Вставьте ссылку</string>
+    <string name="CreateWLink">Создать по ссылке</string>
+    <string name="Create2Other">Выберите тип сценария и вашу роль</string>
+    <string name="Select">Выберите</string>
+    <string name="Role">Роль</string>
+    <string name="ChooseView">Выберите шаблон</string>
+    <string name="SceneName">Сцена</string>
+    <string name="DescriptionName">Описание</string>
+    <string name="InFuture">Будет добавлено в будущем</string>
+</resources>
