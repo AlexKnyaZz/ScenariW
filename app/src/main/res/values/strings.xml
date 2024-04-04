@@ -37,6 +37,9 @@
 	<string name="Create2Other">Select a type and your role</string>
 	<string name="Select">Select</string>
 	<string name="Role">Role</string>
+	<string name="open">Open</string>
+	<string name="deleteThis">Delete</string>
+	<string name="deleteAll">Delete all</string>
 
 	<string name="ChooseView">Choose view</string>
 	<string name="SceneName">Scene</string>

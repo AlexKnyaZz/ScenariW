@@ -33,4 +33,7 @@
     <string name="SceneName">Сцена</string>
     <string name="DescriptionName">Описание</string>
     <string name="InFuture">Будет добавлено в будущем</string>
+    <string name="open">Открыть</string>
+    <string name="deleteThis">Удалить</string>
+    <string name="deleteAll">Удалить всё</string>
 </resources>

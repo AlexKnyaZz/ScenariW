@@ -31,10 +31,12 @@ package alex.knyazz.myapplication;
     import android.widget.TableRow;
     import android.widget.TextView;
 
+    import androidx.core.content.ContextCompat;
+
     import java.util.ArrayList;
     import java.util.HashSet;
 
-    public class scenarious extends Activity {
+    public class scenarious extends Activity implements View.OnClickListener {
 
 
         private RelativeLayout authorisation;
@@ -63,6 +65,8 @@ package alex.knyazz.myapplication;
     int scenNum = 0;
 
     public ArrayList<String> fileNames = new ArrayList<String>();
+
+        int clickNum = 0; // кол-во нажатий на кнопку
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -130,7 +134,11 @@ package alex.knyazz.myapplication;
     }
 
         public void fillTableWithFileData() {
+            int countId = 0; // счётчик для установки id
         for (String fileName : fileNames) {
+            // увеличиваем счётчик
+            countId += 1;
+
             // Получаем SharedPreferences для текущего файла
             SharedPreferences filePrefs = getSharedPreferences(fileName, MODE_PRIVATE);
 
@@ -138,26 +146,31 @@ package alex.knyazz.myapplication;
             String name = filePrefs.getString("saved_name", "");
             String type = filePrefs.getString("saved_type", "");
 
-            // Создаем новую строку в таблице
-            //TableRow row = new TableRow(this);
-
-            // Клонируем существующие элементы TableRowSc, NameOfScene и TypeOfScene
-            //TableRow clonedRow = (TableRow) getLayoutInflater().inflate(R.layout.table_scenarious, null);
+            // Клонируем существующие элементы
             TableLayout stk = (TableLayout) findViewById(R.id.table);
             TableRow clonedTableRow = new TableRow(this);
-            //TextView clonedNameTextView = (TextView) findViewById(R.id.NameOfScene);
-            //TextView clonedTypeTextView = (TextView) findViewById(R.id.TypeOfScene);
             TextView clonedNameTextView = new TextView(this);
-            //clonedNameTextView.setLayoutParams(new ViewGroup.LayoutParams(10, 42));
             clonedNameTextView.setWidth(625);
             clonedNameTextView.setTextSize(25);
-            clonedNameTextView.setPadding(80, 50, 5, 5);
+            clonedNameTextView.setPadding(80, 15, 5, 15);
             clonedNameTextView.setGravity(Gravity.LEFT);
+            clonedNameTextView.setId(countId); // устанавливаем id
+            clonedNameTextView.setClickable(true);
+
+            clonedNameTextView.setOnClickListener(this);
+
+
             TextView clonedTypeTextView = new TextView(this);
             //clonedTypeTextView.setLayoutParams(new ViewGroup.LayoutParams(10, 42));
             clonedTypeTextView.setTextSize(25);
-            clonedTypeTextView.setPadding(5, 50, 5, 5);
+            clonedTypeTextView.setPadding(5, 15, 5, 15);
             clonedTypeTextView.setGravity(Gravity.CENTER);
+
+            clonedNameTextView.setId(countId); // устанавливаем id
+            clonedNameTextView.setTag(name);
+            clonedTableRow.setTag(name);
+
+            clonedNameTextView.setClickable(true);
 
             System.out.println("table 1");
 
@@ -188,6 +201,53 @@ package alex.knyazz.myapplication;
         //System.out.println("succeeeeeeeeeeeeeeeeees");
         startActivity(intent);
     }
+
+        @Override
+        public void onClick(View v) {
+            clickNum += 1;
+            System.out.println(clickNum);
+            if (clickNum == 1) {
+                // получаем тег нажатого элемента для дальнейших действий (тег = имя нового файла, что упрощает работу с данными)
+                String naame = (String) v.getTag();
+                v.setBackground(ContextCompat.getDrawable(this, R.color.bbb));
+                // получаем данные этого элемента
+                data(naame);
+
+                addCurrent(naame);
+            /*sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
+            SharedPreferences.Editor ed3 = sPref.edit();
+            ed3.putString("current_name", naame);
+            ed3.apply();
+            */
+            } else if (clickNum > 1) {
+                // снимаем выделение с элемента
+                v.setBackground(null);
+                clickNum = 0;
+            }
+            // получаем id нажатого элемента для дальнейших действий
+        /*int idd = v.getId();
+        System.out.println("idd = "+ idd);*/
+
+
+        }
+
+        public void addCurrent(String s) {
+            sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
+            SharedPreferences.Editor ed3 = sPref.edit();
+            ed3.putString("current_name", s);
+            ed3.apply();
+        }
+
+        public void data(String s) {
+            SharedPreferences filePrefs = getSharedPreferences(s, MODE_PRIVATE);
+
+            // Получаем значения по ключам
+            String name = filePrefs.getString("saved_name", "");
+            String type = filePrefs.getString("saved_type", "");
+
+            System.out.println("name: " + name + ", type: " + type);
+        }
+
 }
 	
 	

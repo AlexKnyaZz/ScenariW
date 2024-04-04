@@ -103,6 +103,30 @@
 
 
 				<Button
+					android:layout_width="100dp"
+					android:layout_height="50dp"
+					android:layout_marginTop="570dp"
+					android:layout_marginStart="25dp"
+					android:text="@string/deleteThis"
+					android:textSize="10sp" />
+
+				<Button
+					android:layout_width="100dp"
+					android:layout_height="50dp"
+					android:layout_marginTop="570dp"
+					android:layout_centerHorizontal="true"
+					android:text="@string/open"
+					android:textSize="10sp" />
+
+				<Button
+					android:layout_width="100dp"
+					android:layout_height="50dp"
+					android:layout_marginTop="570dp"
+					android:layout_marginStart="255dp"
+					android:text="@string/deleteAll"
+					android:textSize="10sp" />
+
+				<Button
 					android:id="@+id/Return"
 					android:layout_width="337dp"
 					android:layout_height="40dp"

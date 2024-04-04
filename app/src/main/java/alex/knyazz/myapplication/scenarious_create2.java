@@ -30,12 +30,10 @@ package alex.knyazz.myapplication;
     import android.widget.ImageView;
     import android.widget.RelativeLayout;
     import android.widget.ScrollView;
-    import android.widget.Spinner;
     import android.widget.TextView;
     import android.widget.Toast;
 
     import java.util.ArrayList;
-    import java.util.Arrays;
     import java.util.HashSet;
     import java.util.Set;
 
@@ -208,17 +206,6 @@ package alex.knyazz.myapplication;
         ed1.putString("count: ", String.valueOf(ScenNum));
         ed1.commit();
 
-        //добавляем в список имён файлов
-        /*fileNames.add(name);
-        SharedPreferences.Editor ed2 = sPref.edit();
-        ed2.putStringSet("fileNames", fileNames);
-        ed2.apply();*/
-
-        /*fileNames.add(name);
-        sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
-        SharedPreferences.Editor ed3 = sPref.edit();
-        ed3.putStringSet("fileNames", (Set<String>) fileNames);
-        ed3.apply();*/
 
         fileNames.add(name);
         sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
