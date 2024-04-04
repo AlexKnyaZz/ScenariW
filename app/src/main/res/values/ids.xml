@@ -27,4 +27,5 @@
     <item name="TypeOfScene" type="id" />
     <item name="TableRowSc" type="id" />
     <item name="table" type="id" />
+    <item name="scrollTable" type="id" />
 </resources>

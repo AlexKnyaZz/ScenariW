@@ -1,5 +1,6 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="wrap_content" >
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
 	<!--
 	/*
 	 *	This content is generated from the API File Info.
@@ -15,7 +16,8 @@
 	 *
 	 */
 	-->
-	<ScrollView android:id="@+id/authorisation"
+	<RelativeLayout
+		android:id="@+id/authorisation"
 		android:layout_width="wrap_content"
 		android:layout_height="match_parent" >
 
@@ -156,12 +158,14 @@
 					/>
 
 				<ScrollView
+					android:id="@+id/scrollTable"
 					android:layout_width="337dp"
 					android:layout_height="390dp"
 					android:layout_marginStart="19dp"
 					android:layout_marginTop="120dp">
 
 					<TableLayout
+						android:id="@+id/table"
 						android:layout_width="337dp"
 						android:layout_height="390dp"
 						android:stretchColumns="1"
@@ -169,21 +173,7 @@
 						<TableRow
 							android:id="@+id/TableRowSc">
 
-							<TextView
-								android:id="@+id/NameOfScene"
-								android:layout_width="224dp"
-								android:gravity="left"
-								android:layout_marginStart="5dp"
-								android:padding="5dp"
-								android:text="@string/Name"
-								android:textSize="25sp" />
-							<TextView
-								android:id="@+id/TypeOfScene"
-								android:text="@string/Type"
-								android:padding="5dp"
-								android:textSize="25sp"
-								android:gravity="center"
-								/>
+
 						</TableRow>
 					</TableLayout>
 
@@ -230,5 +220,5 @@
 			</RelativeLayout>
 		</RelativeLayout>
 
-	</ScrollView>
+	</RelativeLayout>
 </HorizontalScrollView>

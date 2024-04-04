@@ -20,8 +20,8 @@ package alex.knyazz.myapplication;
     import android.app.Activity;
     import android.content.Intent;
     import android.content.SharedPreferences;
-    import android.content.SyncRequest;
     import android.os.Bundle;
+    import android.view.Gravity;
     import android.view.View;
     import android.widget.Button;
     import android.widget.ImageView;
@@ -34,12 +34,10 @@ package alex.knyazz.myapplication;
     import java.util.ArrayList;
     import java.util.HashSet;
 
-    import alex.knyazz.myapplication.scenarious_create2;
-
     public class scenarious extends Activity {
 
 
-    private ScrollView authorisation;
+        private RelativeLayout authorisation;
     private RelativeLayout content_container;
     private RelativeLayout page_authorisation_ek1;
     private View _bg__authorisation_ek2;
@@ -57,6 +55,7 @@ package alex.knyazz.myapplication;
     private TableRow TableRowSc;
     private TextView NameOfScene;
     private TextView TypeOfScene;
+        private ScrollView scrollTable;
 
 
     SharedPreferences sPref;
@@ -78,9 +77,9 @@ package alex.knyazz.myapplication;
         setContentView(R.layout.scenarious1);}
 
         files();
+        fillTableWithFileData();
 
-
-        authorisation = (ScrollView) findViewById(R.id.authorisation);
+        authorisation = (RelativeLayout) findViewById(R.id.authorisation);
         table = (TableLayout) findViewById(R.id.table);
         TableRowSc = (TableRow) findViewById(R.id.TableRowSc);
         NameOfScene = (TextView) findViewById(R.id.NameOfScene);
@@ -98,6 +97,7 @@ package alex.knyazz.myapplication;
         __________________________________________________________________ = (TextView) findViewById(R.id.__________________________________________________________________);
         shape_with_text_ek4 = (ImageView) findViewById(R.id.shape_with_text_ek4);
         ___________________ = (TextView) findViewById(R.id.___________________);
+        scrollTable = (ScrollView) findViewById(R.id.scrollTable);
 
 
 
@@ -129,31 +129,52 @@ package alex.knyazz.myapplication;
         }
     }
 
-    /*public void fillTableWithFileData() {
+        public void fillTableWithFileData() {
         for (String fileName : fileNames) {
             // Получаем SharedPreferences для текущего файла
             SharedPreferences filePrefs = getSharedPreferences(fileName, MODE_PRIVATE);
 
             // Получаем значения по ключам
-            String name = filePrefs.getString("name", "");
-            String type = filePrefs.getString("type", "");
+            String name = filePrefs.getString("saved_name", "");
+            String type = filePrefs.getString("saved_type", "");
 
             // Создаем новую строку в таблице
-            TableRow row = new TableRow(this);
+            //TableRow row = new TableRow(this);
 
             // Клонируем существующие элементы TableRowSc, NameOfScene и TypeOfScene
-            TableRow clonedRow = (TableRow) getLayoutInflater().inflate(R.layout.scenarious1, table, true);
-            TextView clonedNameTextView = (TextView) clonedRow.findViewById(R.id.NameOfScene);
-            TextView clonedTypeTextView = (TextView) clonedRow.findViewById(R.id.TypeOfScene);
+            //TableRow clonedRow = (TableRow) getLayoutInflater().inflate(R.layout.table_scenarious, null);
+            TableLayout stk = (TableLayout) findViewById(R.id.table);
+            TableRow clonedTableRow = new TableRow(this);
+            //TextView clonedNameTextView = (TextView) findViewById(R.id.NameOfScene);
+            //TextView clonedTypeTextView = (TextView) findViewById(R.id.TypeOfScene);
+            TextView clonedNameTextView = new TextView(this);
+            //clonedNameTextView.setLayoutParams(new ViewGroup.LayoutParams(10, 42));
+            clonedNameTextView.setWidth(625);
+            clonedNameTextView.setTextSize(25);
+            clonedNameTextView.setPadding(80, 50, 5, 5);
+            clonedNameTextView.setGravity(Gravity.LEFT);
+            TextView clonedTypeTextView = new TextView(this);
+            //clonedTypeTextView.setLayoutParams(new ViewGroup.LayoutParams(10, 42));
+            clonedTypeTextView.setTextSize(25);
+            clonedTypeTextView.setPadding(5, 50, 5, 5);
+            clonedTypeTextView.setGravity(Gravity.CENTER);
+
+            System.out.println("table 1");
 
             // Устанавливаем данные из файла SharedPreferences в клонированные элементы
             clonedNameTextView.setText(name);
             clonedTypeTextView.setText(type);
 
+            clonedTableRow.addView(clonedNameTextView);
+            System.out.println("table 2");
+            clonedTableRow.addView(clonedTypeTextView);
+            System.out.println("table 3");
+
             // Добавляем клонированную строку в таблицу
-            table.addView(clonedRow);
+            stk.addView(clonedTableRow);
+            System.out.println("table 4");
         }
-    }*/
+        }
 
 
 
