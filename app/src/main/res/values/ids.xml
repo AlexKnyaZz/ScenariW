@@ -28,4 +28,5 @@
     <item name="TableRowSc" type="id" />
     <item name="table" type="id" />
     <item name="scrollTable" type="id" />
+    <item name="form1" type="id" />
 </resources>

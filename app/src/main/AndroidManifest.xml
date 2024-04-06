@@ -28,6 +28,7 @@
 		<activity android:name=".scenarious"/>
 		<activity android:name=".scenarious_create1"/>
 		<activity android:name=".scenarious_create2"/>
+		<activity android:name=".edit_page" />
 
 	</application>
 

@@ -1,8 +1,6 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	xmlns:app="http://schemas.android.com/apk/res-auto">
+	android:layout_height="wrap_content">
 	<!--
 	/*
 	 *	This content is generated from the API File Info.
@@ -94,7 +92,7 @@
 						android:background="@drawable/roundstyle2"
 						android:backgroundTint="@color/bbb"
 						android:gravity="center"
-						android:onClick="startNewActivity"
+						android:onClick="toChoiceFormat"
 
 						android:text="@string/Create"
 						android:textAlignment="center"

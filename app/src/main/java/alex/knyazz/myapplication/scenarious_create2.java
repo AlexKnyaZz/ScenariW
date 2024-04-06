@@ -155,7 +155,12 @@ package alex.knyazz.myapplication;
             saveType();
             saveRole();
             saveName();
-        } else return;
+
+            toChoiceFormat(v);
+        } else if (id == R.id.Return) {
+            toReturn(v);
+        }
+        ;
     }
 
 
@@ -213,6 +218,8 @@ package alex.knyazz.myapplication;
         Set<String> fileNamesSet = new HashSet<>(fileNames);
         ed3.putStringSet("fileNames", fileNamesSet);
         ed3.apply();
+
+        addCurrent(name);
     }
 
     public int countScen(){
@@ -224,14 +231,20 @@ package alex.knyazz.myapplication;
         return ScenNum;
     }
 
-    public void toCreate1(View v){
-        Intent intent = new Intent(scenarious_create2.this, frame_3_activity.class);
-        //System.out.println("succeeeeeeeeeeeeeeeeees");
+        public void addCurrent(String s) {
+            sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
+            SharedPreferences.Editor ed3 = sPref.edit();
+            ed3.putString("current_name", s);
+            ed3.apply();
+        }
+
+        public void toChoiceFormat(View v) {
+            Intent intent = new Intent(scenarious_create2.this, edit_page.class);
         startActivity(intent);
     }
-        public void toReturn(View v){
+
+        public void toReturn(View v) {
             Intent intent = new Intent(scenarious_create2.this, frame_3_activity.class);
-            //System.out.println("succeeeeeeeeeeeeeeeeees");
             startActivity(intent);
         }
 }
