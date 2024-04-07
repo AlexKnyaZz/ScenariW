@@ -29,4 +29,6 @@
     <item name="table" type="id" />
     <item name="scrollTable" type="id" />
     <item name="form1" type="id" />
+    <item name="a" type="id" />
+    <item name="b" type="id" />
 </resources>

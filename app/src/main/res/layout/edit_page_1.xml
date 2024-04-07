@@ -60,14 +60,37 @@
                 <ImageView
                     android:id="@+id/shape_with_text_ek2"
                     android:layout_width="337dp"
-                    android:layout_height="245dp"
+                    android:layout_height="300dp"
                     android:layout_marginStart="19dp"
-                    android:layout_marginTop="300dp"
+                    android:layout_marginTop="360dp"
                     android:layout_centerHorizontal="true"
                     android:contentDescription="shape_with_text_ek2"
                     android:background="@drawable/roundstyle2"
-                    android:backgroundTint="@color/ccc" />
+                    android:backgroundTint="@color/ccc"></ImageView>
 
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="585dp"
+                    android:layout_marginStart="250dp"
+                    android:background="@drawable/roundstyle2"
+                    android:backgroundTint="@color/___________________________________________________________________color"></ImageView>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="600dp"
+                    android:layout_marginStart="265dp"
+                    android:background="@drawable/roundstyle2"
+                    android:backgroundTint="@color/white"></ImageView>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="600dp"
+                    android:layout_marginStart="295dp"
+                    android:background="@drawable/roundstyle2"
+                    android:backgroundTint="@color/white"></ImageView>
 
                 <RelativeLayout
                     android:id="@+id/frame_5"
@@ -75,27 +98,7 @@
                     android:layout_marginStart="43dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true">
-
-
-                    <Button
-                        android:id="@+id/Create"
-                        android:layout_width="337dp"
-                        android:layout_height="40dp"
-                        android:layout_centerHorizontal="true"
-
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:background="@drawable/roundstyle2"
-                        android:backgroundTint="@color/bbb"
-                        android:gravity="center"
-                        android:onClick="toCreate1"
-
-                        android:text="@string/Create"
-                        android:textAlignment="center"
-                        android:textColor="@color/___________________________________________________________________color" />
-
-                </RelativeLayout>
+                    android:layout_centerHorizontal="true" />
 
 
                 <Button
@@ -115,30 +118,6 @@
                     android:textAlignment="center"
                     android:textColor="@color/___________________________________________________________________color" />
 
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="570dp"
-                    android:layout_marginStart="25dp"
-                    android:text="@string/deleteThis"
-                    android:textSize="10sp" />
-
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="570dp"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/open"
-                    android:textSize="10sp" />
-
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="570dp"
-                    android:layout_marginStart="255dp"
-                    android:text="@string/deleteAll"
-                    android:textSize="10sp" />
-
                 <ImageView
                     android:id="@+id/shape_with_text_ek3"
                     android:layout_width="337dp"
@@ -147,21 +126,62 @@
                     android:layout_marginStart="19dp"
                     android:layout_marginTop="58dp"
                     android:background="@drawable/roundstyle2"
-                    android:backgroundTint="@color/bbb"
+                    android:backgroundTint="@color/ccc"
                     android:contentDescription="shape_with_text_ek3"
                     android:src="@drawable/shape_with_text_ek3" />
 
                 <ImageView
                     android:id="@+id/shape_with_scanerious"
                     android:layout_width="337dp"
-                    android:layout_height="350dp"
+                    android:layout_height="450dp"
                     android:layout_marginStart="19dp"
                     android:layout_marginTop="120dp"
                     android:background="@drawable/squarestyle"
-                    android:backgroundTint="@color/ccc"
+                    android:backgroundTint="@color/white"
                     android:contentDescription="shape_with_text_ek1"
                     android:gravity="center"
                     android:layout_centerHorizontal="true" />
+
+                <ScrollView
+                    android:layout_width="335dp"
+                    android:layout_height="450dp"
+                    android:layout_marginStart="21dp"
+                    android:layout_marginTop="120dp">
+
+                    <TableLayout
+                        android:id="@id/table"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="0dp"
+                        android:stretchColumns="1"
+                        android:layout_centerHorizontal="true">
+
+                        <TableRow
+                            android:id="@id/TableRowSc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/a"
+                                android:padding="5dp"
+                                android:layout_width="140dp"
+                                android:background="@drawable/table"></com.google.android.material.textfield.TextInputEditText>
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/b"
+                                android:padding="5dp"
+                                android:background="@drawable/table"
+
+                                >
+
+                            </com.google.android.material.textfield.TextInputEditText>
+                        </TableRow>
+
+                    </TableLayout>
+
+                </ScrollView>
+
 
                 <LinearLayout
                     android:layout_width="337dp"
@@ -175,27 +195,27 @@
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/ccc" />
+                        android:backgroundTint="@color/white" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/ccc" />
+                        android:backgroundTint="@color/white" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/ccc" />
+                        android:backgroundTint="@color/white" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/ccc" />
+                        android:backgroundTint="@color/white" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/ccc" />
+                        android:backgroundTint="@color/white" />
 
                 </LinearLayout>
 

@@ -190,9 +190,10 @@
 
 					<TableLayout
 						android:id="@+id/table"
-						android:layout_width="337dp"
+						android:layout_width="330dp"
 						android:layout_height="390dp"
 						android:stretchColumns="1"
+						android:layout_marginStart="6dp"
 						>
 						<TableRow
 							android:id="@+id/TableRowSc">
