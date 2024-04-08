@@ -103,6 +103,7 @@
 
 
 				<Button
+					android:id="@+id/delete"
 					android:layout_width="100dp"
 					android:layout_height="50dp"
 					android:layout_marginTop="570dp"
@@ -111,6 +112,7 @@
 					android:textSize="10sp" />
 
 				<Button
+					android:id="@+id/open"
 					android:layout_width="100dp"
 					android:layout_height="50dp"
 					android:layout_marginTop="570dp"
@@ -119,6 +121,7 @@
 					android:textSize="10sp" />
 
 				<Button
+					android:id="@+id/deleteAll"
 					android:layout_width="100dp"
 					android:layout_height="50dp"
 					android:layout_marginTop="570dp"

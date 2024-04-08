@@ -82,11 +82,28 @@ public class edit_page extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.form1) {
-
+            addForm("form1Table");
         } else {
             return;
         }
         ;
+    }
+
+    public String selected() {
+        SharedPreferences filePrefs = getSharedPreferences("MyFiles", MODE_PRIVATE);
+        // Получаем значение по ключу
+        String name = filePrefs.getString("current_name", "");
+        System.out.println("name: " + name);
+        return name;
+    }
+
+    // добавляем название выбранного шаблона в файл сценария
+    public void addForm(String s) {
+        String name = selected();
+        sPref = getSharedPreferences(name, MODE_PRIVATE); //сохраняем в файл, название которого = названию сценария
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString("form", s);
+        ed.commit();
     }
 
 /*

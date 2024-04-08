@@ -85,21 +85,13 @@ package alex.knyazz.myapplication;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scenarious_create2);
 
-        countScen(); // кол-во созданных сценариев
+        // в контексте данного слоя - для тестов
+        // считаем кол-во сценариев
+        countScen();
         System.out.println(ScenNum);
 
-
-
-
-        // список имён файлов
-        /*fileNames = new HashSet<>();
-        sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
-        Set<String> savedFileNames = sPref.getStringSet("fileNames", new HashSet<>());
-        fileNames.addAll(savedFileNames);
-        for (String fileName : fileNames) {
-            System.out.println("fileNames: " + fileName);
-        }*/
-
+        // для тестов
+        // смотрим существующие файлы
         files();
 
         authorisation = (ScrollView) findViewById(R.id.authorisation);
@@ -150,29 +142,18 @@ package alex.knyazz.myapplication;
     public void onClick(View v){
         int id = v.getId();
         if(id == R.id.Create){
-            name = scenName.getText().toString();
+            name = scenName.getText().toString(); // берём из поля с id scenName имя сценария для вывода в консоль (для тестов)
             System.out.println(name);
-            saveType();
+            saveType(); // сохраняем в новый файл тип, роль и название
             saveRole();
             saveName();
 
-            toChoiceFormat(v);
+            toChoiceFormat(v); // переход на следующий слой
         } else if (id == R.id.Return) {
             toReturn(v);
         }
         ;
     }
-
-
-    /*public void files(){
-        System.out.println("fileNames!!!!!!!!!!!!!");
-        sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
-        Set<String> savedFileNames = sPref.getStringSet("fileNames", new HashSet<>());
-        fileNames.addAll(savedFileNames);
-        for (String fileName : fileNames) {
-            System.out.println("fileNames: " + fileName);
-        }
-    }*/
 
     public void files(){
         sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
@@ -206,22 +187,22 @@ package alex.knyazz.myapplication;
         //добавляем в счётчик сценариев
         sPref = getSharedPreferences("ScenariousCount", MODE_PRIVATE);
         SharedPreferences.Editor ed1 = sPref.edit();
-        //String data = sPref.getString(SAVED_NAME, scenName.getText().toString());
         ScenNum += 1;
         ed1.putString("count: ", String.valueOf(ScenNum));
         ed1.commit();
 
-
+        // добавляем имя сценария в файл MyFiles
         fileNames.add(name);
         sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
         SharedPreferences.Editor ed3 = sPref.edit();
         Set<String> fileNamesSet = new HashSet<>(fileNames);
         ed3.putStringSet("fileNames", fileNamesSet);
         ed3.apply();
-
+        // добавляем имя текущего файла
         addCurrent(name);
     }
 
+        // считаем, сколько сейчас сценариев (на этом слое - для тестов)
     public int countScen(){
         sPref = getSharedPreferences("ScenariousCount", MODE_PRIVATE);
         SharedPreferences.Editor ed1 = sPref.edit();
@@ -231,6 +212,7 @@ package alex.knyazz.myapplication;
         return ScenNum;
     }
 
+        // текущий элемент, установка
         public void addCurrent(String s) {
             sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
             SharedPreferences.Editor ed3 = sPref.edit();
@@ -238,9 +220,10 @@ package alex.knyazz.myapplication;
             ed3.apply();
         }
 
+        // кнопка Далее
         public void toChoiceFormat(View v) {
             Intent intent = new Intent(scenarious_create2.this, edit_page.class);
-        startActivity(intent);
+            startActivity(intent);
     }
 
         public void toReturn(View v) {

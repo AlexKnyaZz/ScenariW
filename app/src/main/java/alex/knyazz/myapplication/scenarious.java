@@ -33,32 +33,22 @@ package alex.knyazz.myapplication;
 
     import androidx.core.content.ContextCompat;
 
+    import java.io.File;
     import java.util.ArrayList;
     import java.util.HashSet;
 
     public class scenarious extends Activity implements View.OnClickListener {
 
 
-        private RelativeLayout authorisation;
-    private RelativeLayout content_container;
-    private RelativeLayout page_authorisation_ek1;
+        private RelativeLayout authorisation, content_container, page_authorisation_ek1, frame_5;
     private View _bg__authorisation_ek2;
-    private ImageView shape_with_text;
-    private ImageView shape_with_text_ek2;
-    private RelativeLayout frame_5;
-    private Button Create;
-    private Button Return;
-    private ImageView shape_with_text_ek3;
-    private ImageView shape_with_scanerious;
-    private TextView __________________________________________________________________;
-    private ImageView  shape_with_text_ek4;
-    private TextView ___________________;
+        private ImageView shape_with_text, shape_with_text_ek2, shape_with_text_ek3, shape_with_scanerious, shape_with_text_ek4;
+        private Button Create, Return, delete, open, deleteAll;
+        private TextView ___________________, __________________________________________________________________;
     private TableLayout table;
     private TableRow TableRowSc;
-    private TextView NameOfScene;
-    private TextView TypeOfScene;
+        private TextView NameOfScene, TypeOfScene;
         private ScrollView scrollTable;
-
 
     SharedPreferences sPref;
 
@@ -67,21 +57,21 @@ package alex.knyazz.myapplication;
     public ArrayList<String> fileNames = new ArrayList<String>();
 
         int clickNum = 0; // кол-во нажатий на кнопку
+        String selectedFile;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
-        countScene();
-
+        countScene(); // проверяем, есть ли сценарии
         if (scenNum == 0){
             setContentView(R.layout.scenarious);
-        }else{
-        setContentView(R.layout.scenarious1);}
+        } else {
+            setContentView(R.layout.scenarious1);
+        }
 
-        files();
-        fillTableWithFileData();
+        files(); // список всех файлов
+        fillTableWithFileData(); // наполнение таблицы данными из списка всех файлов
 
         authorisation = (RelativeLayout) findViewById(R.id.authorisation);
         table = (TableLayout) findViewById(R.id.table);
@@ -94,8 +84,6 @@ package alex.knyazz.myapplication;
         shape_with_text = (ImageView) findViewById(R.id.shape_with_text);
         shape_with_text_ek2 = (ImageView) findViewById(R.id.shape_with_text_ek2);
         frame_5 = (RelativeLayout) findViewById(R.id.frame_5);
-        Create = (Button) findViewById(R.id.Create);
-        Return = (Button) findViewById(R.id.Return);
         shape_with_text_ek3 = (ImageView) findViewById(R.id.shape_with_text_ek3);
         shape_with_scanerious = (ImageView) findViewById(R.id.shape_with_scanerious);
         __________________________________________________________________ = (TextView) findViewById(R.id.__________________________________________________________________);
@@ -103,14 +91,22 @@ package alex.knyazz.myapplication;
         ___________________ = (TextView) findViewById(R.id.___________________);
         scrollTable = (ScrollView) findViewById(R.id.scrollTable);
 
-
+        Create = (Button) findViewById(R.id.Create);
+        Create.setOnClickListener(this);
+        Return = (Button) findViewById(R.id.Return);
+        Return.setOnClickListener(this);
+        delete = (Button) findViewById(R.id.delete);
+        delete.setOnClickListener(this);
+        open = (Button) findViewById(R.id.open);
+        open.setOnClickListener(this);
+        deleteAll = (Button) findViewById(R.id.deleteAll);
+        deleteAll.setOnClickListener(this);
 
         //custom code goes here
-
-
     }
 
-    // считаем, сколько сценариев создано
+
+        // считаем, сколько сценариев создано
     public int countScene(){
         sPref = getSharedPreferences("ScenariousCount", MODE_PRIVATE);
         String  scenNum1 = sPref.getString("count: ", String.valueOf(scenNum));
@@ -133,6 +129,7 @@ package alex.knyazz.myapplication;
         }
     }
 
+        // наполнение таблицы данными
         public void fillTableWithFileData() {
             int countId = 0; // счётчик для установки id
         for (String fileName : fileNames) {
@@ -149,6 +146,7 @@ package alex.knyazz.myapplication;
             // Клонируем существующие элементы
             TableLayout stk = (TableLayout) findViewById(R.id.table);
             TableRow clonedTableRow = new TableRow(this);
+            // копируем первую ячейку
             TextView clonedNameTextView = new TextView(this);
             clonedNameTextView.setWidth(625);
             clonedNameTextView.setTextSize(25);
@@ -156,32 +154,25 @@ package alex.knyazz.myapplication;
             clonedNameTextView.setGravity(Gravity.LEFT);
             clonedNameTextView.setId(countId); // устанавливаем id
             clonedNameTextView.setClickable(true);
-
             clonedNameTextView.setOnClickListener(this);
-
-
+            // копируем вторую ячейку
             TextView clonedTypeTextView = new TextView(this);
-            //clonedTypeTextView.setLayoutParams(new ViewGroup.LayoutParams(10, 42));
             clonedTypeTextView.setTextSize(25);
             clonedTypeTextView.setPadding(5, 15, 5, 15);
             clonedTypeTextView.setGravity(Gravity.CENTER);
-
-            clonedNameTextView.setId(countId); // устанавливаем id
+            clonedTypeTextView.setClickable(true);
+            clonedTypeTextView.setOnClickListener(this);
+            // устанавливаем тег
             clonedNameTextView.setTag(name);
             clonedTableRow.setTag(name);
-
-            clonedNameTextView.setClickable(true);
-
-            System.out.println("table 1");
 
             // Устанавливаем данные из файла SharedPreferences в клонированные элементы
             clonedNameTextView.setText(name);
             clonedTypeTextView.setText(type);
 
+            // Добавляем ячейки с данными в строку таблицы
             clonedTableRow.addView(clonedNameTextView);
-            System.out.println("table 2");
             clonedTableRow.addView(clonedTypeTextView);
-            System.out.println("table 3");
 
             // Добавляем клонированную строку в таблицу
             stk.addView(clonedTableRow);
@@ -190,7 +181,7 @@ package alex.knyazz.myapplication;
         }
 
 
-
+        // кнопки
     public void toCreate1(View v){
         Intent intent = new Intent(scenarious.this, scenarious_create1.class);
         //System.out.println("succeeeeeeeeeeeeeeeeees");
@@ -202,8 +193,91 @@ package alex.knyazz.myapplication;
         startActivity(intent);
     }
 
+        // для тестов и реализации дальнейших функций; получение данных о файле
+        public void data(String s) {
+            SharedPreferences filePrefs = getSharedPreferences(s, MODE_PRIVATE);
+
+            // Получаем значения по ключам
+            String name = filePrefs.getString("saved_name", "");
+            String type = filePrefs.getString("saved_type", "");
+
+            System.out.println("name: " + name + ", type: " + type);
+        }
+
+        // выбрать текущий файл
+        public void addCurrent(String s) {
+            sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
+            SharedPreferences.Editor ed3 = sPref.edit();
+            ed3.putString("current_name", s);
+            ed3.apply();
+        }
+
+        // выбранный файл
+        public String selected() {
+            SharedPreferences filePrefs = getSharedPreferences("MyFiles", MODE_PRIVATE);
+            // Получаем значение по ключу
+            String name = filePrefs.getString("current_name", "");
+            System.out.println("name: " + name);
+            return name;
+        }
+
+        // удаляем файл
+        public void deleteFile() {
+            selectedFile = selected();
+            System.out.println(selectedFile);
+            // удаляем из списка с названиями сценариев
+            fileNames.remove(selectedFile);
+            System.out.println("Удалён файл " + selectedFile);
+            files();
+            // вычитаем из счётчика единицу
+            sPref = getSharedPreferences("ScenariousCount", MODE_PRIVATE);
+            String scenNum1 = sPref.getString("count: ", String.valueOf(scenNum));
+            scenNum = Integer.parseInt(scenNum1);
+
+            System.out.println("До удаления: " + scenNum);
+
+            SharedPreferences.Editor ed1 = sPref.edit();
+            scenNum -= 1;
+            ed1.putString("count: ", String.valueOf(scenNum));
+            ed1.commit();
+
+            System.out.println("После удаления: " + scenNum);
+
+            // удаляем сам файл
+            File file = new File("/data/data/alex.knyazz.myapplication/shared_prefs/" + selectedFile + ".xml");
+            file.delete();
+
+            // обновляем отображающийся на экране список сценариев
+            fillTableWithFileData(); // наполнение таблицы данными из списка всех файлов
+        }
+
+        public void openFile() {
+
+        }
+
+        public void deleteAllFiles() {
+
+        }
+
+
+        // обработчик кнопок
         @Override
         public void onClick(View v) {
+            int id = v.getId();
+            if (id == R.id.Create) {
+                toCreate1(v);
+            } else if (id == R.id.Return) {
+                toReturn(v);
+            } else if (id == R.id.delete) {
+                //deleteFile();
+                System.out.println("deleted");
+            } else if (id == R.id.open) {
+                openFile();
+                System.out.println("open");
+            } else if (id == R.id.deleteAll) {
+                deleteAllFiles();
+                System.out.println("deleteAll");
+            } else { // при выборе файла из списка сценариев
             clickNum += 1;
             System.out.println(clickNum);
             if (clickNum == 1) {
@@ -214,6 +288,7 @@ package alex.knyazz.myapplication;
                 data(naame);
 
                 addCurrent(naame);
+                System.out.println(naame);
             /*sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
             SharedPreferences.Editor ed3 = sPref.edit();
             ed3.putString("current_name", naame);
@@ -227,24 +302,7 @@ package alex.knyazz.myapplication;
             // получаем id нажатого элемента для дальнейших действий
         /*int idd = v.getId();
         System.out.println("idd = "+ idd);*/
-
         }
-
-        public void addCurrent(String s) {
-            sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
-            SharedPreferences.Editor ed3 = sPref.edit();
-            ed3.putString("current_name", s);
-            ed3.apply();
-        }
-
-        public void data(String s) {
-            SharedPreferences filePrefs = getSharedPreferences(s, MODE_PRIVATE);
-
-            // Получаем значения по ключам
-            String name = filePrefs.getString("saved_name", "");
-            String type = filePrefs.getString("saved_type", "");
-
-            System.out.println("name: " + name + ", type: " + type);
         }
 
 }

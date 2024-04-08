@@ -94,7 +94,7 @@
 						android:gravity="center"
 						android:onClick="toChoiceFormat"
 
-						android:text="@string/Create"
+						android:text="@string/next"
 						android:textAlignment="center"
 						android:textColor="@color/___________________________________________________________________color" />
 

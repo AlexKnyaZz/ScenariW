@@ -178,6 +178,7 @@
                             </com.google.android.material.textfield.TextInputEditText>
                         </TableRow>
 
+
                     </TableLayout>
 
                 </ScrollView>
@@ -195,27 +196,32 @@
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white" />
+                        android:backgroundTint="@color/white"
+                        android:background="@drawable/table_add_row_below" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white" />
+                        android:backgroundTint="@color/white"
+                        android:background="@drawable/table_delete_row_svgrepo_com" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white" />
+                        android:backgroundTint="@color/white"
+                        android:background="@drawable/text_heading_svgrepo_com" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white" />
+                        android:backgroundTint="@color/white"
+                        android:background="@drawable/ellipsis_svgrepo_com" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white" />
+                        android:backgroundTint="@color/white"
+                        android:background="@drawable/checkmark_svgrepo_com" />
 
                 </LinearLayout>
 
