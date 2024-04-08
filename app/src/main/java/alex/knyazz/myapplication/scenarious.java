@@ -182,7 +182,6 @@
         // кнопки
         public void toCreate1(View v) {
             Intent intent = new Intent(scenarious.this, scenarious_create1.class);
-            //System.out.println("succeeeeeeeeeeeeeeeeees");
             startActivity(intent);
         }
 
@@ -266,7 +265,9 @@
         }
 
         public void openFile() {
-
+            selectedFile = selected();
+            Intent intent = new Intent(scenarious.this, edit_page_1.class);
+            startActivity(intent);
         }
 
         public void deleteAllFiles() {
@@ -288,7 +289,6 @@
                 System.out.println("deleted");
             } else if (id == R.id.open) {
                 openFile();
-                System.out.println("open");
             } else if (id == R.id.deleteAll) {
                 deleteAllFiles();
                 System.out.println("deleteAll");

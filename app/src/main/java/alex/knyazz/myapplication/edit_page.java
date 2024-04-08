@@ -68,8 +68,11 @@ public class edit_page extends Activity implements View.OnClickListener {
         shape_with_text_ek3 = (ImageView) findViewById(R.id.shape_with_text_ek3);
         table = (TableLayout) findViewById(R.id.table);
         frame_5 = (RelativeLayout) findViewById(R.id.frame_5);
+
         Create = (Button) findViewById(R.id.Create);
+        Create.setOnClickListener(this);
         Return = (Button) findViewById(R.id.Return);
+        Return.setOnClickListener(this);
         form1 = (Button) findViewById(R.id.form1);
         form1.setOnClickListener(this);
 
@@ -83,6 +86,8 @@ public class edit_page extends Activity implements View.OnClickListener {
         int id = v.getId();
         if (id == R.id.form1) {
             addForm("form1Table");
+        } else if (id == R.id.Create) {
+            toCreate1(v);
         } else {
             return;
         }
@@ -217,8 +222,8 @@ public class edit_page extends Activity implements View.OnClickListener {
     }
 
     public void toCreate1(View v) {
-        //Intent intent = new Intent(edit_page.this, scenarious_create1.class);
-        //startActivity(intent);
+        Intent intent = new Intent(edit_page.this, edit_page_1.class);
+        startActivity(intent);
     }
 
     public void toReturn(View v) {

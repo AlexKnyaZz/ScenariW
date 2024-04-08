@@ -159,18 +159,21 @@
 
                         <TableRow
                             android:id="@id/TableRowSc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/a"
                                 android:padding="5dp"
                                 android:layout_width="140dp"
+                                android:layout_height="match_parent"
                                 android:background="@drawable/table"></com.google.android.material.textfield.TextInputEditText>
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/b"
                                 android:padding="5dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
                                 android:background="@drawable/table"
 
                                 >
@@ -196,31 +199,31 @@
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="@color/bbb"
                         android:background="@drawable/table_add_row_below" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="@color/bbb"
                         android:background="@drawable/table_delete_row_svgrepo_com" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="@color/bbb"
                         android:background="@drawable/text_heading_svgrepo_com" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="@color/bbb"
                         android:background="@drawable/ellipsis_svgrepo_com" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/white"
+                        android:backgroundTint="@color/bbb"
                         android:background="@drawable/checkmark_svgrepo_com" />
 
                 </LinearLayout>
