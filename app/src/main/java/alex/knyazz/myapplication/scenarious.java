@@ -65,13 +65,21 @@
             super.onCreate(savedInstanceState);
             countScene(); // проверяем, есть ли сценарии
             if (scenNum == 0) {
+                System.out.println("запустился слой 1");
                 setContentView(R.layout.scenarious);
             } else {
+                System.out.println("запустился слой 2");
                 setContentView(R.layout.scenarious1);
-            }
+                delete = (Button) findViewById(R.id.delete);
+                delete.setOnClickListener(this);
+                open = (Button) findViewById(R.id.open);
+                open.setOnClickListener(this);
+                deleteAll = (Button) findViewById(R.id.deleteAll);
+                deleteAll.setOnClickListener(this);
 
-            files(); // список всех файлов
-            fillTableWithFileData(); // наполнение таблицы данными из списка всех файлов
+                files(); // список всех файлов
+                fillTableWithFileData(); // наполнение таблицы данными из списка всех файлов
+            }
 
             authorisation = (RelativeLayout) findViewById(R.id.authorisation);
             table = (TableLayout) findViewById(R.id.table);
@@ -95,12 +103,6 @@
             Create.setOnClickListener(this);
             Return = (Button) findViewById(R.id.Return);
             Return.setOnClickListener(this);
-            delete = (Button) findViewById(R.id.delete);
-            delete.setOnClickListener(this);
-            open = (Button) findViewById(R.id.open);
-            open.setOnClickListener(this);
-            deleteAll = (Button) findViewById(R.id.deleteAll);
-            deleteAll.setOnClickListener(this);
 
             //custom code goes here
         }
@@ -110,8 +112,16 @@
             sPref = getSharedPreferences("ScenariousCount", MODE_PRIVATE);
             String scenNum1 = sPref.getString("count: ", String.valueOf(scenNum));
             scenNum = Integer.parseInt(scenNum1);
-            System.out.println("scenNum: " + scenNum);
-            return scenNum;
+            if (scenNum >= 0) {
+                System.out.println("scenNum: " + scenNum);
+                System.out.println("scenNum 1111 === " + scenNum);
+                return scenNum;
+            } else {
+                scenNum = 0;
+                System.out.println("scenNum 2222 === " + scenNum);
+                return scenNum;
+            }
+
         }
 
         // список имён созданных файлов
@@ -133,7 +143,9 @@
             // Клонируем существующие элементы
             TableLayout stk = (TableLayout) findViewById(R.id.table);
             // обнуление всех созданных дубликатов //
-            stk.removeAllViews();
+            if (stk.getChildCount() > 0) {
+                stk.removeAllViews();
+            }
             // вывод списка сценариев
             int countId = 0; // счётчик для установки id
             for (String fileName : fileNames) {
@@ -149,9 +161,9 @@
                 // копируем первую ячейку
                 TextView clonedNameTextView = new TextView(this);
                 // устанавливаем параметры отображения
-                clonedNameTextView.setWidth(625);
+                clonedNameTextView.setWidth(600);
                 clonedNameTextView.setTextSize(25);
-                clonedNameTextView.setPadding(80, 15, 5, 15);
+                clonedNameTextView.setPadding(60, 15, 0, 15);
                 clonedNameTextView.setGravity(Gravity.LEFT);
                 clonedNameTextView.setId(countId); // устанавливаем id
                 clonedNameTextView.setClickable(true);
@@ -159,7 +171,7 @@
                 // копируем вторую ячейку
                 TextView clonedTypeTextView = new TextView(this);
                 clonedTypeTextView.setTextSize(25);
-                clonedTypeTextView.setPadding(5, 15, 5, 15);
+                clonedTypeTextView.setPadding(0, 15, 5, 15);
                 clonedTypeTextView.setGravity(Gravity.CENTER);
                 clonedTypeTextView.setClickable(true);
                 clonedTypeTextView.setOnClickListener(this);
@@ -271,6 +283,46 @@
         }
 
         public void deleteAllFiles() {
+            for (String fileName : fileNames) {
+                // очищаем файл перед удалением
+                sPref = getSharedPreferences(fileName, MODE_PRIVATE);
+                SharedPreferences.Editor ed2 = sPref.edit();
+                ed2.clear();
+                ed2.commit();
+
+                System.out.println("очистили сам файл");
+
+                // удаляем сам файл
+                File file = new File("/data/data/alex.knyazz.myapplication/shared_prefs/" + fileName + ".xml");
+                file.delete();
+
+                System.out.println("удалили");
+            }
+
+            sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
+            SharedPreferences.Editor ed1 = sPref.edit();
+            ed1.clear();
+            ed1.commit();
+            File file = new File("/data/data/alex.knyazz.myapplication/shared_prefs/MyFiles.xml");
+            file.delete();
+
+            sPref = getSharedPreferences("ScenariousCount", MODE_PRIVATE);
+            SharedPreferences.Editor ed2 = sPref.edit();
+            ed2.clear();
+            ed2.commit();
+            File file1 = new File("/data/data/alex.knyazz.myapplication/shared_prefs/ScenariousCount.xml");
+            file1.delete();
+
+            fillTableWithFileData();
+            // перезапускаем
+            Intent intent = new Intent(scenarious.this, scenarious.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            //в самую последнюю очередь
+            /*sPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
+            SharedPreferences.Editor ed1 = sPref.edit();
+            ed1.clear();
+            ed1.commit();*/
 
         }
 

@@ -17,18 +17,14 @@
 
 package alex.knyazz.myapplication;
 
-import android.app.Activity;
-import android.os.Bundle;
-
-
-import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.content.Intent;
+    import android.app.Activity;
+    import android.content.Intent;
+    import android.os.Bundle;
+    import android.view.View;
+    import android.widget.Button;
+    import android.widget.ImageView;
+    import android.widget.RelativeLayout;
+    import android.widget.TextView;
 
 public class frame_3_activity extends Activity {
 
@@ -75,7 +71,6 @@ public class frame_3_activity extends Activity {
 	}
 	public void toScenarious(View v){
 		Intent intent = new Intent(frame_3_activity.this, scenarious.class);
-		//System.out.println("succeeeeeeeeeeeeeeeeees");
 		startActivity(intent);
 
 	}
