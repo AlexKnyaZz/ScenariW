@@ -278,6 +278,8 @@
 
         public void openFile() {
             selectedFile = selected();
+            System.out.println("selected: " + selectedFile);
+            System.out.println("пробуем открыть...");
             Intent intent = new Intent(scenarious.this, edit_page_1.class);
             startActivity(intent);
         }

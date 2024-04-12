@@ -31,4 +31,5 @@
     <item name="form1" type="id" />
     <item name="a" type="id" />
     <item name="b" type="id" />
+    <item name="addRow" type="id" />
 </resources>

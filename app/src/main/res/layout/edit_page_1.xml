@@ -161,7 +161,7 @@
                             android:id="@id/TableRowSc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
-
+                            <!--
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/a"
                                 android:padding="5dp"
@@ -179,6 +179,7 @@
                                 >
 
                             </com.google.android.material.textfield.TextInputEditText>
+                            -->
                         </TableRow>
 
 
@@ -197,6 +198,7 @@
                     android:showDividers="middle">
 
                     <Button
+                        android:id="@+id/addRow"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:backgroundTint="@color/bbb"
