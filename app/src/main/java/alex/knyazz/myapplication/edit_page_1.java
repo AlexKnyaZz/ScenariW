@@ -23,6 +23,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -162,6 +163,7 @@ countId = 0 создаётся перед циклом*/
 
         a = new TextInputEditText(this);
         a.setWidth(240);
+        a.setGravity(Gravity.LEFT);
         //a.setHeight(500);
         a.setBackground(getDrawable(R.drawable.table));
         a.setPadding(5, 5, 5, 5);
@@ -186,7 +188,12 @@ countId = 0 создаётся перед циклом*/
             @Override
             public void afterTextChanged(Editable s) {
                 String te = new String(String.valueOf(a.getText()));
-                System.out.println("text?????? - " + te);
+                System.out.println("text - " + te);
+                String ta = (String) a.getTag();
+                System.out.println("ta = " + ta);
+
+                saveData(te, ta);
+
                 // пытаемся выровнять ячейки
 
                 int leftHeight = a.getHeight();
@@ -255,8 +262,13 @@ countId = 0 создаётся перед циклом*/
 
             @Override
             public void afterTextChanged(Editable s) {
-                String te = new String(String.valueOf(a.getText()));
+                String te = new String(String.valueOf(b.getText()));
                 System.out.println("text?????? - " + te);
+                String ta = (String) b.getTag();
+                System.out.println("ta = " + ta);
+
+                saveData(te, ta);
+
                 // пытаемся выровнять ячейки
 
                 /*int leftHeight = a.getHeight();
@@ -323,7 +335,7 @@ countId = 0 создаётся перед циклом*/
 изначально есть
 lastId = 0 создаётся в самом начале кода
 countId = 0 создаётся перед циклом*/
-/*
+
         // инициализация или что-то вроде того
         TableLayout stk = (TableLayout) findViewById(R.id.table);
         // обнуление всех созданных дубликатов //
@@ -352,7 +364,7 @@ countId = 0 создаётся перед циклом*/
             // устанавливаем данные из файла
             a.setText(aText);
             // добавляем в tableRow
-            clonedTableRow.addView(a);*/
+            clonedTableRow.addView(a);
 /*
             // Получаем SharedPreferences для текущего файла
             SharedPreferences filePrefs = getSharedPreferences(fileName, MODE_PRIVATE);
@@ -390,7 +402,7 @@ countId = 0 создаётся перед циклом*/
             // Добавляем клонированную строку в таблицу
             stk.addView(clonedTableRow);
             System.out.println("table 4"); */
-        //}
+        }
     }
 
     public void addRow() {
@@ -412,10 +424,42 @@ countId = 0 создаётся перед циклом*/
         System.out.println(aid);
         System.out.println(atag);
 
+        a.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // оставляем как есть
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // оставляем как есть
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String te = new String(String.valueOf(a.getText()));
+                System.out.println("text - " + te);
+                String ta = (String) a.getTag();
+                System.out.println("ta = " + ta);
+
+                saveData(te, ta);
+
+                // пытаемся выровнять ячейки
+
+                int leftHeight = a.getHeight();
+                System.out.println("leftHeight" + leftHeight);
+                int rightHeight = b.getHeight();
+                System.out.println("rightHeight" + rightHeight);
+
+            }
+        });
+
         b = new TextInputEditText(this);
         b.setWidth(240);
+        a.setGravity(Gravity.LEFT);
         //b.setHeight(500);
         b.setPadding(5, 5, 5, 5);
+        b.setGravity(Gravity.LEFT);
         //b.setHeight(100);
         b.setBackground(getDrawable(R.drawable.table));
         b.setId(lastId);
@@ -425,9 +469,51 @@ countId = 0 создаётся перед циклом*/
         System.out.println(bid);
         System.out.println(btag);
 
+        b.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // оставляем как есть
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // оставляем как есть
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String te = new String(String.valueOf(b.getText()));
+                System.out.println("text?????? - " + te);
+                String ta = (String) b.getTag();
+                System.out.println("ta = " + ta);
+
+                saveData(te, ta);
+
+                // пытаемся выровнять ячейки
+
+
+            }
+        });
+
         clonedTableRow.addView(a);
         clonedTableRow.addView(b);
         stk.addView(clonedTableRow);
+    }
+
+    public void deleteRow() {
+        TableLayout stk = (TableLayout) findViewById(R.id.table);
+        TableRow clonedTableRow = new TableRow(this);
+        a = new TextInputEditText(this);
+        b = new TextInputEditText(this);
+        stk.removeView(findViewById(lastId));
+        lastId -= 1;
+    }
+
+    public void saveData(String text, String tag) {
+        sPref = getSharedPreferences(filename, MODE_PRIVATE);
+        SharedPreferences.Editor ed1 = sPref.edit();
+        ed1.putString(tag, text);
+        ed1.commit();
     }
 
     public void toCreate1(View v) {
