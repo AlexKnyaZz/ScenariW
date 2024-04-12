@@ -32,4 +32,5 @@
     <item name="a" type="id" />
     <item name="b" type="id" />
     <item name="addRow" type="id" />
+    <item name="removeRow" type="id" />
 </resources>

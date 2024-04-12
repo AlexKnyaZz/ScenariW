@@ -147,6 +147,9 @@
                 saveType(); // сохраняем в новый файл тип, роль и название
                 saveRole();
                 saveName();
+                // новые строчки, которые используются в коде другой активности
+                setRowsCount();
+                setLastId();
 
                 toChoiceFormat(v); // переход на следующий слой
             } else if (id == R.id.Return) {
@@ -177,6 +180,20 @@
             SharedPreferences.Editor ed = sPref.edit();
             ed.putString(SAVED_ROLE, role);
             ed.commit();
+        }
+
+        private void setRowsCount() {
+            sPref = getSharedPreferences(name, MODE_PRIVATE);
+            SharedPreferences.Editor ed1 = sPref.edit();
+            ed1.putString("rowsCount", "0");
+            ed1.commit();
+        }
+
+        private void setLastId() {
+            sPref = getSharedPreferences(name, MODE_PRIVATE);
+            SharedPreferences.Editor ed1 = sPref.edit();
+            ed1.putString("lastId", "0");
+            ed1.commit();
         }
 
         private void saveName() {

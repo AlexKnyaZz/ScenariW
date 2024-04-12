@@ -205,6 +205,7 @@
                         android:background="@drawable/table_add_row_below" />
 
                     <Button
+                        android:id="@+id/removeRow"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:backgroundTint="@color/bbb"
