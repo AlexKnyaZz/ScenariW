@@ -49,4 +49,5 @@
 	<string name="assist1">Add a new row before the start!</string>
 	<string name="assist2">Good job! Set some text and add a new row again...</string>
 	<string name="assist3">Dont forget to add a new rows! In case of deleting too.</string>
+	<string name="categoryAssist">Age category for now: </string>
 </resources>

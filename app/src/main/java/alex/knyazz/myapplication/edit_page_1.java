@@ -21,7 +21,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -43,7 +42,7 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
     private RelativeLayout authorisation, content_container, page_authorisation_ek1, frame_5, assistent;
     private View _bg__authorisation_ek2;
     private ImageView shape_with_text, shape_with_text_ek2, shape_with_text_ek3, shape_with_scanerious;
-    private TextView scenName, assist1, assist2, assist3;
+    private TextView scenName, assist1, assist2, assist3, categoryAssist;
     private TableLayout table;
     private TableRow TableRowSc;
     private TextInputEditText a, b;
@@ -60,6 +59,11 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
     String filename;
     int lastId;
     int rowsCount;
+    String old;
+
+    int asiCall = 0; // кол-во вызовов подсказок ассистента
+    int ageCategoryGlobal = 0;
+    int termins = 0; // кол-во терминов из бд
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,6 +95,10 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         assist2.setVisibility(View.INVISIBLE);
         assist3 = (TextView) findViewById(R.id.assist3);
         assist3.setVisibility(View.INVISIBLE);
+
+        categoryAssist = (TextView) findViewById(R.id.categoryAssist);
+        categoryAssist.setVisibility(View.INVISIBLE);
+        old = (String) categoryAssist.getText();
 
         // устанавливаем в самом верху имя сценария
         scenName = (TextView) findViewById(R.id.scenName);
@@ -198,7 +206,11 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
             System.out.println("fillData : результат, rowsCount = " + rowsCount);
 
 
+
             // включаем подсказки ассистента
+            // подксказка 1
+            asiCall = 0;
+
             assistent.setVisibility(View.VISIBLE);
             assist1.setVisibility(View.VISIBLE);
             assist2.setVisibility(View.INVISIBLE);
@@ -210,35 +222,42 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
 
             System.out.println("fillData: rowsCount = " + rowsCount);
         } else {
-
-            // включаем подсказки ассистента
-            assistent.setVisibility(View.VISIBLE);
             assist1.setVisibility(View.INVISIBLE);
-            assist2.setVisibility(View.VISIBLE);
+            categoryAssist.setVisibility(View.VISIBLE);
 
-            new Handler().postDelayed(() -> assistent.setAlpha(.8f), 5000);
-            new Handler().postDelayed(() -> assistent.setAlpha(.6f), 5100);
-            new Handler().postDelayed(() -> assistent.setAlpha(.4f), 5200);
-            new Handler().postDelayed(() -> assistent.setAlpha(.2f), 5300);
-            new Handler().postDelayed(() -> assistent.setAlpha(0), 5400);
-            new Handler().postDelayed(() -> assistent.setVisibility(View.INVISIBLE), 5400);
+            /*
+            if(asiCall == 0 | asiCall == 1){
+                System.out.println("должно отображаться assist2, ведь asiCal = "+asiCall);
 
-            new Handler().postDelayed(() -> assist2.setVisibility(View.INVISIBLE), 5400);
+                // включаем подсказки ассистента
+                assistent.setVisibility(View.VISIBLE);
+                assist1.setVisibility(View.INVISIBLE);
+                assist2.setVisibility(View.VISIBLE);
+                categoryAssist.setVisibility(View.INVISIBLE);
 
+                asiCall += 1;
+                System.out.println("asiCal = "+asiCall);
+                System.out.println("--------------------");
+            } else if (asiCall == 2) {
+                System.out.println("должно отображаться assist 3, ведь asiCal = "+asiCall);
+                assist1.setVisibility(View.INVISIBLE);
+                assist2.setVisibility(View.INVISIBLE);
+                assist3.setVisibility(View.VISIBLE);
+                categoryAssist.setVisibility(View.INVISIBLE);
+                asiCall += 1;
+                System.out.println("--------------------");
 
-            new Handler().postDelayed(() -> assistent.setVisibility(View.VISIBLE), 6000);
-            new Handler().postDelayed(() -> assistent.setAlpha(1), 6000);
-            new Handler().postDelayed(() -> assist3.setVisibility(View.VISIBLE), 6000);
+            } else{
+                System.out.println("должно отображаться category, ведь asiCal = "+asiCall);
+                System.out.println("--------------------");
 
-            new Handler().postDelayed(() -> assistent.setAlpha(.8f), 10000);
-            new Handler().postDelayed(() -> assistent.setAlpha(.6f), 10100);
-            new Handler().postDelayed(() -> assistent.setAlpha(.4f), 10200);
-            new Handler().postDelayed(() -> assistent.setAlpha(.2f), 10300);
-            new Handler().postDelayed(() -> assistent.setAlpha(0), 10400);
-            new Handler().postDelayed(() -> assistent.setVisibility(View.INVISIBLE), 10400);
+                assist1.setVisibility(View.INVISIBLE);
+                assist2.setVisibility(View.INVISIBLE);
+                assist3.setVisibility(View.INVISIBLE);
+                categoryAssist.setVisibility(View.VISIBLE);
+            }
 
-            new Handler().postDelayed(() -> assist3.setVisibility(View.INVISIBLE), 10400);
-
+             */
 
 
 
@@ -298,6 +317,55 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
                         System.out.println("tag = " + ta);
 
                         saveData(te, ta);
+                        ///////////////////////////////////////////////////
+
+                        // проверяем возрастную категорию
+                        System.out.println("fillData : пробуем выявить возрастную категорию...");
+
+
+                        // создаем экземпляр DatabaseOfTerms
+                        DatabaseOfTerms database = new DatabaseOfTerms(edit_page_1.this);
+
+                        // вызываем метод через экземпляр
+
+                        String[] words = te.split("\\s+"); // Разделить строку на отдельные слова
+
+                        int ageCategory = 0;
+                        termins = 0;
+
+                        // пока есть слова
+                        for (String word : words) {
+                            ageCategory = database.getAgeCategoryByTerm(word);
+                            if (ageCategory == -1) { // если слова нет в бд, возрастная  категория этого слова = 0
+                                ageCategory = 0;
+                            }
+                            System.out.println("Word: " + word + ", Age Category: " + ageCategory);
+                            if (ageCategory >= ageCategoryGlobal) { // если слово есть в бд и его категория больше глобальной
+                                ageCategoryGlobal = ageCategory; // обновляем глобальное
+                                termins += 1; // прибавляем термин, отвечающий за кол-во таких слов
+                            } else {
+                                ageCategory = ageCategoryGlobal; //
+                            }
+                        }
+                        System.out.println("количество найденных терминов из БД = " + termins);
+
+                        if (termins > 0) {
+                            //ageCategoryGlobal = ageCategoryGlobal;
+                        } else {
+                            ageCategoryGlobal = 0;
+                        }
+
+
+                        System.out.println("fillData : определена  возрастная категория: " + ageCategoryGlobal);
+
+                        // делаем видимой подсказку ассистента
+                        assist1.setVisibility(View.INVISIBLE);
+                        assist2.setVisibility(View.INVISIBLE);
+                        assist3.setVisibility(View.INVISIBLE);
+                        assistent.setVisibility(View.VISIBLE);
+                        categoryAssist.setVisibility(View.VISIBLE);
+
+                        categoryAssist.setText(old + " " + ageCategory + "+");
 
                     }
                 });
@@ -477,6 +545,7 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         ed1.putString(tag, text);
         ed1.commit();
     }
+
 
     public void toCreate1(View v) {
         //Intent intent = new Intent(edit_page.this, scenarious_create1.class);

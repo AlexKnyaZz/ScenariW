@@ -37,4 +37,5 @@
     <item name="assist2" type="id" />
     <item name="assist3" type="id" />
     <item name="assistent" type="id" />
+    <item name="categoryAssist" type="id" />
 </resources>

@@ -40,4 +40,5 @@
     <string name="assist1">Добавьте новую строчку, чтобы начать!</string>
     <string name="assist2">Отлично! Заполни ячейки и добавь ещё одну строчку...</string>
     <string name="assist3">Не забывайте добавлять новую строчку! Особенно перед удалением.</string>
+    <string name="categoryAssist">Текущая возрастная категория: </string>
 </resources>
