@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -39,10 +40,10 @@ import java.util.ArrayList;
 public class edit_page_1 extends Activity implements View.OnClickListener {
 
 
-    private RelativeLayout authorisation, content_container, page_authorisation_ek1, frame_5;
+    private RelativeLayout authorisation, content_container, page_authorisation_ek1, frame_5, assistent;
     private View _bg__authorisation_ek2;
     private ImageView shape_with_text, shape_with_text_ek2, shape_with_text_ek3, shape_with_scanerious;
-    private TextView scenName;
+    private TextView scenName, assist1, assist2, assist3;
     private TableLayout table;
     private TableRow TableRowSc;
     private TextInputEditText a, b;
@@ -80,6 +81,17 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         shape_with_text_ek2 = (ImageView) findViewById(R.id.shape_with_text_ek2);
         shape_with_text_ek3 = (ImageView) findViewById(R.id.shape_with_text_ek3);
         shape_with_scanerious = (ImageView) findViewById(R.id.shape_with_scanerious);
+
+        // ассистент
+        assistent = (RelativeLayout) findViewById(R.id.assistent);
+        assistent.setVisibility(View.INVISIBLE);
+        assist1 = (TextView) findViewById(R.id.assist1);
+        assist1.setVisibility(View.INVISIBLE);
+        assist2 = (TextView) findViewById(R.id.assist2);
+        assist2.setVisibility(View.INVISIBLE);
+        assist3 = (TextView) findViewById(R.id.assist3);
+        assist3.setVisibility(View.INVISIBLE);
+
         // устанавливаем в самом верху имя сценария
         scenName = (TextView) findViewById(R.id.scenName);
         scenName.setText(setName());
@@ -96,7 +108,6 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         removeRow = (Button) findViewById(R.id.removeRow);
         removeRow.setOnClickListener(this);
 
-        System.out.println("onCreate: lastId " + lastId);
 
         // наполнение данными
         fillData();
@@ -150,9 +161,14 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         }
 
         // для проверки, содержит ли файл число
+
+        //lastId = sPref.getInt("lastId", 0);
+        //rowsCount = sPref.getInt("rowsCount", 0);
+
         String lastIdString = sPref.getString("lastId", "");
         if (!lastIdString.isEmpty() && lastIdString.matches("\\d+")) {
             lastId = Integer.parseInt(lastIdString);
+            System.out.println("fillData : проверка, содержит ли число lastId; результат " + lastId);
         } else {
             lastId = 0;
             System.out.println("fillData : строка lastId не может быть преобразована в число");
@@ -161,24 +177,71 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         String rowsCountString = sPref.getString("rowsCount", "");
         if (!rowsCountString.isEmpty() && rowsCountString.matches("\\d+")) {
             rowsCount = Integer.parseInt(rowsCountString);
+            System.out.println("fillData : проверка, содержит ли число rowsCount; результат " + rowsCount);
         } else {
             rowsCount = 0;
             System.out.println("fillData : строка rowsCount не может быть преобразована в число");
         }
 
-        //rowsCount = Integer.parseInt(sPref.getString("rowsCount", "")); // берём значение кол-ва строк из файла
-        //lastId = Integer.parseInt(sPref.getString("lastId", "")); // берём значение последнего добавленного id из файла
         System.out.println("до кода, lastId в fillData: " + lastId);
 
         if (rowsCount == 0) {
             // если не создано ни одной строчки, создаём
 
-            System.out.println("fillData : вызываем метод addRow....");
+            // тестовое
+            rowsCount += 1; // добавляем единицу, поскольку теперь строчка есть
+            // обновляем кол-во строчек в файле
+            SharedPreferences.Editor ed1 = sPref.edit();
+            //ed1.putString("rowsCount", String.valueOf(rowsCount));
+            ed1.putString("rowsCount", String.valueOf(rowsCount));
+            ed1.commit();
+            System.out.println("fillData : результат, rowsCount = " + rowsCount);
 
+
+            // включаем подсказки ассистента
+            assistent.setVisibility(View.VISIBLE);
+            assist1.setVisibility(View.VISIBLE);
+            assist2.setVisibility(View.INVISIBLE);
+            assist3.setVisibility(View.INVISIBLE);
+
+
+            System.out.println("fillData : вызываем метод addRow....");
             addRow();
 
             System.out.println("fillData: rowsCount = " + rowsCount);
         } else {
+
+            // включаем подсказки ассистента
+            assistent.setVisibility(View.VISIBLE);
+            assist1.setVisibility(View.INVISIBLE);
+            assist2.setVisibility(View.VISIBLE);
+
+            new Handler().postDelayed(() -> assistent.setAlpha(.8f), 5000);
+            new Handler().postDelayed(() -> assistent.setAlpha(.6f), 5100);
+            new Handler().postDelayed(() -> assistent.setAlpha(.4f), 5200);
+            new Handler().postDelayed(() -> assistent.setAlpha(.2f), 5300);
+            new Handler().postDelayed(() -> assistent.setAlpha(0), 5400);
+            new Handler().postDelayed(() -> assistent.setVisibility(View.INVISIBLE), 5400);
+
+            new Handler().postDelayed(() -> assist2.setVisibility(View.INVISIBLE), 5400);
+
+
+            new Handler().postDelayed(() -> assistent.setVisibility(View.VISIBLE), 6000);
+            new Handler().postDelayed(() -> assistent.setAlpha(1), 6000);
+            new Handler().postDelayed(() -> assist3.setVisibility(View.VISIBLE), 6000);
+
+            new Handler().postDelayed(() -> assistent.setAlpha(.8f), 10000);
+            new Handler().postDelayed(() -> assistent.setAlpha(.6f), 10100);
+            new Handler().postDelayed(() -> assistent.setAlpha(.4f), 10200);
+            new Handler().postDelayed(() -> assistent.setAlpha(.2f), 10300);
+            new Handler().postDelayed(() -> assistent.setAlpha(0), 10400);
+            new Handler().postDelayed(() -> assistent.setVisibility(View.INVISIBLE), 10400);
+
+            new Handler().postDelayed(() -> assist3.setVisibility(View.INVISIBLE), 10400);
+
+
+
+
             // если строчки уже есть
             for (int i = 0; i <= lastId; i++) { // здесь мы создаём таблицы на основе имеющихся  данных
 
@@ -243,6 +306,7 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
                 b.setWidth(240);
                 //b.setHeight(500);
                 b.setPadding(5, 5, 5, 5);
+                b.setGravity(Gravity.LEFT);
                 //b.setHeight(100);
                 b.setBackground(getDrawable(R.drawable.table));
                 // присваиваем id созданному элементу
@@ -282,51 +346,6 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
                     }
                 });
 
-                /*
-                // копируем первую ячейку
-                TextInputEditText c = new TextInputEditText(this);
-                // параметры //
-                c.setWidth(200);
-                c.setGravity(Gravity.LEFT);
-                //a.setHeight(500);
-                c.setBackground(getDrawable(R.drawable.table));
-                c.setPadding(5, 5, 5, 5);
-                // присваиваем id созданному элементу
-                c.setId(i);
-                c.setTag("c"+i);
-                // устанавливаем данные из файла
-                c.setText(cText);
-                // добавляем в tableRow
-                clonedTableRow.addView(c);
-
-                // слушатель
-                c.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                        // оставляем как есть
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        // оставляем как есть
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                        System.out.println("вызывается fillData, c");
-
-                        String te = new String(String.valueOf(c.getText()));
-                        System.out.println("fillData: text - " + te);
-                        String ta = (String) c.getTag();
-                        System.out.println("tag = " + ta);
-
-                        saveData(te, ta);
-
-                    }
-                });*/
-
-
                 // Добавляем клонированную строку в таблицу
                 stk.addView(clonedTableRow);
             }
@@ -343,22 +362,29 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
 
         // для проверки, содержит ли файл число
         String lastIdString = sPref.getString("lastId", "");
+
+        System.out.println("addRow : lastIdString " + lastIdString);
+
         if (!lastIdString.isEmpty() && lastIdString.matches("\\d+")) {
             lastId = Integer.parseInt(lastIdString);
+            System.out.println("addRow : результат проверки lastId = " + lastId);
         } else {
             lastId = 0;
-            System.out.println("fillData : строка lastId не может быть преобразована в число");
+            System.out.println("addRow : строка lastId не может быть преобразована в число");
         }
 
         String rowsCountString = sPref.getString("rowsCount", "");
+
+        System.out.println("addRow : rowsCountString " + rowsCountString);
+
         if (!rowsCountString.isEmpty() && rowsCountString.matches("\\d+")) {
             rowsCount = Integer.parseInt(rowsCountString);
+            System.out.println("addRow : результат проверки rowsCount = " + rowsCount);
         } else {
             rowsCount = 0;
-            System.out.println("fillData : строка rowsCount не может быть преобразована в число");
+            System.out.println("addRow : строка rowsCount не может быть преобразована в число");
         }
 
-        //lastId = Integer.parseInt(sPref.getString("lastId", "")); // берём значение последнего id
 
         System.out.println("lastId in addRow  = " + lastId);
 
@@ -380,31 +406,6 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         System.out.println(aid);
         System.out.println(atag);
 
-        /*a.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // оставляем как есть
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // оставляем как есть
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                System.out.println("вызывается addRow, a");
-
-                String te = new String(String.valueOf(a.getText()));
-                System.out.println("text - " + te);
-                String ta = (String) a.getTag();
-                System.out.println("ta = " + ta);
-
-                saveData(te, ta);
-
-            }
-        });*/
 
         b = new TextInputEditText(this);
         b.setWidth(240);
@@ -421,46 +422,6 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         System.out.println(bid);
         System.out.println(btag);
 
-        /*b.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // оставляем как есть
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // оставляем как есть
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                System.out.println("вызывается addRow, b");
-
-                String te = new String(String.valueOf(b.getText()));
-                System.out.println("text?????? - " + te);
-                String ta = (String) b.getTag();
-                System.out.println("ta = " + ta);
-
-                saveData(te, ta);
-
-
-            }
-        });*/
-
-        /*
-        TextInputEditText c = new TextInputEditText(this);
-        c.setWidth(200);
-        //a.setHeight(500);
-        c.setBackground(getDrawable(R.drawable.table));
-        c.setPadding(5, 5, 5, 5);
-        c.setId(lastId);
-        c.setTag("c" + lastId);
-        int cid = c.getId();
-        String ctag = (String) c.getTag();
-        System.out.println(cid);
-        System.out.println(ctag);  */
-
 
         clonedTableRow.addView(a);
         clonedTableRow.addView(b);
@@ -471,12 +432,13 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         // при следующем вызове объекту будет дан увеличенный id
         lastId += 1;
         SharedPreferences.Editor ed1 = sPref.edit();
+        //ed1.putString("lastId", String.valueOf(lastId));
         ed1.putString("lastId", String.valueOf(lastId));
-        ed1.commit();
         System.out.println("addRow, результат, lastId = " + lastId);
 
         rowsCount += 1; // добавляем единицу, поскольку теперь строчка есть
         // обновляем кол-во строчек в файле
+        //ed1.putString("rowsCount", String.valueOf(rowsCount));
         ed1.putString("rowsCount", String.valueOf(rowsCount));
         ed1.commit();
         System.out.println("addRow, результат, rowsCount = " + rowsCount);
@@ -484,8 +446,29 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
 
     public void deleteRow() {
         TableLayout stk = (TableLayout) findViewById(R.id.table);
+        // узнаём lastId
+        String last = sPref.getString("lastId", "");
+        System.out.println("deleteRow : last " + last);
+
+        lastId = Integer.parseInt(last);
+        System.out.println("deleteRow : lastId " + lastId);
+
+        // очищаем данные перед удалением
+        SharedPreferences.Editor ed1 = sPref.edit();
+        ed1.remove("a" + lastId);
+        ed1.remove("b" + lastId);
+
+        // убираем строчку из таблицы
         stk.removeView(findViewById(lastId));
+
+        // убавляем счётчик
         lastId -= 1;
+        rowsCount -= 1;
+        // фиксируем изменения
+        ed1.putString("lastId", String.valueOf(lastId));
+        ed1.putString("rowsCount", String.valueOf(rowsCount));
+
+        ed1.commit();
     }
 
     public void saveData(String text, String tag) {
@@ -507,239 +490,3 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
 
 
 }
-
-
-// вырезано из кода, сохранено здесь на случай если понадобится
-
-
-// заполнение таблицы данными
-    /*public void fillData() {
-
-        // инициализация или что-то вроде того
-        TableLayout stk = (TableLayout) findViewById(R.id.table);
-        // обнуление всех созданных дубликатов //
-        if (stk.getChildCount() > 0) {
-            stk.removeAllViews();
-        }
-
-        if(lastId == 0){
-            // если lastId = 0, 0 записывается в файл
-
-            System.out.println("fillData: lastId  == 0");
-
-            SharedPreferences.Editor ed1 = sPref.edit();
-            ed1.putString("lastId", String.valueOf(lastId));
-            ed1.commit();
-        } else{
-            System.out.println("fillData: lastId  != 0, lastId = "+lastId);
-            lastId = Integer.parseInt(sPref.getString("lastId", ""));
-        }
-
-        lastId = Integer.parseInt(sPref.getString("lastId", ""));
-        System.out.println("lastId в fillData: "+lastId);
-
-        for (int i = 0; i<=lastId; i++) { // здесь мы создаём таблицы на основе имеющихся  данных
-
-            System.out.println("lastId в цикле fillData: "+lastId);
-
-            SharedPreferences sPref = getSharedPreferences(filename, MODE_PRIVATE);
-            String aText = sPref.getString("a"+i, "");
-            String bText = sPref.getString("b"+i, "");
-
-            System.out.println("fillData: a"+i+" aText "+aText);
-            System.out.println("fillData: b"+i+" bText "+bText);
-
-            // копируем строку таблицы
-            TableRow clonedTableRow  = new TableRow(this);
-            // копируем первую ячейку
-            TextInputEditText a = new TextInputEditText(this);
-            // параметры //
-            a.setWidth(240);
-            a.setGravity(Gravity.LEFT);
-            //a.setHeight(500);
-            a.setBackground(getDrawable(R.drawable.table));
-            a.setPadding(5, 5, 5, 5);
-            // присваиваем id созданному элементу
-            a.setId(i);
-            a.setTag("a"+i);
-            // устанавливаем данные из файла
-            a.setText(aText);
-            // добавляем в tableRow
-            clonedTableRow.addView(a);
-
-            a.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    // оставляем как есть
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    // оставляем как есть
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                    System.out.println("вызывается fillData, a");
-
-                    String te = new String(String.valueOf(a.getText()));
-                    System.out.println("fillData: text - " + te);
-                    String ta = (String) a.getTag();
-                    System.out.println("tag = " + ta);
-
-                    saveData(te, ta);
-
-                }
-            });
-
-            b = new TextInputEditText(this);
-            b.setWidth(240);
-            //b.setHeight(500);
-            b.setPadding(5, 5, 5, 5);
-            //b.setHeight(100);
-            b.setBackground(getDrawable(R.drawable.table));
-            // присваиваем id созданному элементу
-            b.setId(i);
-            b.setTag("b"+i);
-            // устанавливаем данные из файла
-            b.setText(bText);
-            // добавляем в tableRow
-            clonedTableRow.addView(b);
-
-            b.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    // оставляем как есть
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    // оставляем как есть
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                    System.out.println("вызывается fillData, b");
-
-                    //String te = new String(String.valueOf(b.getText()));
-                    String te = b.getText().toString();
-                    System.out.println("fillData: text - " + te);
-                    String ta = (String) b.getTag();
-                    System.out.println("tag = " + ta);
-
-                    saveData(te, ta);
-                }
-            });
-
-            // Добавляем клонированную строку в таблицу
-            stk.addView(clonedTableRow);
-        }
-    }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    public void firstRow() {
-        TableLayout stk = (TableLayout) findViewById(R.id.table);
-        TableRow clonedTableRow = new TableRow(this);
-        TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
-        clonedTableRow.setLayoutParams(params);
-
-        a = new TextInputEditText(this);
-        a.setWidth(240);
-        a.setGravity(Gravity.LEFT);
-        //a.setHeight(500);
-        a.setBackground(getDrawable(R.drawable.table));
-        a.setPadding(5, 5, 5, 5);
-        a.setId(lastId);
-        a.setTag("a" + lastId);
-        int aid = a.getId();
-        String atag = (String) a.getTag();
-        System.out.println(aid);
-        System.out.println(atag);
-
-        a.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // оставляем как есть
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // оставляем как есть
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                System.out.println("вызывается firstRow, a");
-
-                String te = new String(String.valueOf(a.getText()));
-                System.out.println("text - " + te);
-                String ta = (String) a.getTag();
-                System.out.println("ta = " + ta);
-
-                saveData(te, ta);
-
-            }
-        });
-
-
-        b = new TextInputEditText(this);
-        b.setWidth(240);
-        //b.setHeight(500);
-        b.setPadding(5, 5, 5, 5);
-        //b.setHeight(100);
-        b.setBackground(getDrawable(R.drawable.table));
-        b.setId(lastId);
-        b.setTag("b" + lastId);
-        int bid = b.getId();
-        String btag = (String) b.getTag();
-        System.out.println(bid);
-        System.out.println(btag);
-
-        b.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // оставляем как есть
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // оставляем как есть
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                System.out.println("вызывается firstRow, b");
-
-                String te = new String(String.valueOf(b.getText()));
-                System.out.println("text?????? - " + te);
-                String ta = (String) b.getTag();
-                System.out.println("ta = " + ta);
-
-                saveData(te, ta);
-
-            }
-        });
-
-
-        clonedTableRow.addView(a);
-        clonedTableRow.addView(b);
-        stk.addView(clonedTableRow);
-    }
-*/

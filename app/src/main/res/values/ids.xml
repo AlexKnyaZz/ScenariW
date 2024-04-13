@@ -33,4 +33,8 @@
     <item name="b" type="id" />
     <item name="addRow" type="id" />
     <item name="removeRow" type="id" />
+    <item name="assist1" type="id" />
+    <item name="assist2" type="id" />
+    <item name="assist3" type="id" />
+    <item name="assistent" type="id" />
 </resources>

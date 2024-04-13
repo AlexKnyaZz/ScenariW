@@ -185,14 +185,16 @@
         private void setRowsCount() {
             sPref = getSharedPreferences(name, MODE_PRIVATE);
             SharedPreferences.Editor ed1 = sPref.edit();
-            ed1.putString("rowsCount", "0");
+            int rowsCount = 0;
+            ed1.putString("rowsCount", String.valueOf(rowsCount));
             ed1.commit();
         }
 
         private void setLastId() {
             sPref = getSharedPreferences(name, MODE_PRIVATE);
             SharedPreferences.Editor ed1 = sPref.edit();
-            ed1.putString("lastId", "0");
+            int lastId = 0;
+            ed1.putString("lastId", String.valueOf(lastId));
             ed1.commit();
         }
 

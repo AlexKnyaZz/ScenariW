@@ -245,6 +245,70 @@
                     android:layout_centerHorizontal="true" />
 
 
+                <RelativeLayout
+                    android:id="@+id/assistent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/squarestyle"
+                        android:backgroundTint="@color/bbb"
+                        android:rotation="60.0"
+                        android:layout_marginTop="605dp"
+                        android:layout_marginStart="225dp" />
+
+                    <ImageView
+                        android:layout_width="195dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="585dp"
+                        android:layout_marginStart="50dp"
+                        android:background="@drawable/roundstyle2"
+                        android:backgroundTint="@color/bbb" />
+
+                    <TextView
+                        android:id="@+id/assist1"
+                        android:layout_width="195dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="585dp"
+                        android:layout_marginStart="50dp"
+                        android:gravity="center"
+
+                        android:textSize="12dp"
+                        android:text="@string/assist1"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/assist2"
+                        android:layout_width="195dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="585dp"
+                        android:layout_marginStart="50dp"
+                        android:gravity="center"
+
+                        android:textSize="12dp"
+                        android:text="@string/assist2"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/assist3"
+                        android:layout_width="195dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="585dp"
+                        android:layout_marginStart="50dp"
+                        android:gravity="center"
+
+                        android:textSize="12dp"
+                        android:text="@string/assist3"
+
+                        />
+
+                </RelativeLayout>
+
+
             </RelativeLayout>
         </RelativeLayout>
 

@@ -71,6 +71,8 @@ public class edit_page extends Activity implements View.OnClickListener {
 
         Create = (Button) findViewById(R.id.Create);
         Create.setOnClickListener(this);
+        Create.setVisibility(View.INVISIBLE);
+
         Return = (Button) findViewById(R.id.Return);
         Return.setOnClickListener(this);
         form1 = (Button) findViewById(R.id.form1);
@@ -86,6 +88,7 @@ public class edit_page extends Activity implements View.OnClickListener {
         int id = v.getId();
         if (id == R.id.form1) {
             addForm("form1Table");
+            Create.setVisibility(View.VISIBLE);
         } else if (id == R.id.Create) {
             toCreate1(v);
         } else {
