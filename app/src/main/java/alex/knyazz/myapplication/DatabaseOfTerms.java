@@ -30,17 +30,87 @@ public class DatabaseOfTerms extends SQLiteOpenHelper {
 
         // Заполняем базу данных данными
         // ru
+        // 6+
+        addTerm(db, "грипп", "болезнь", 6);
+        addTerm(db, "гриппе", "болезнь", 6);
+        addTerm(db, "гриппа", "болезнь", 6);
+
+        addTerm(db, "простуда", "болезнь", 6);
+        addTerm(db, "простуде", "болезнь", 6);
+        addTerm(db, "простуды", "болезнь", 6);
+
+        addTerm(db, "ОРВИ", "болезнь", 6);
+
+        addTerm(db, "кашель", "болезнь", 6);
+        addTerm(db, "кашле", "болезнь", 6);
+        addTerm(db, "кашля", "болезнь", 6);
+
+        addTerm(db, "насморк", "болезнь", 6);
+        addTerm(db, "насморке", "болезнь", 6);
+        addTerm(db, "насморка", "болезнь", 6);
+
+        addTerm(db, "боль", "болезнь", 6);
+        addTerm(db, "боли", "болезнь", 6);
+
+        addTerm(db, "больной", "болезнь", 6);
+        addTerm(db, "больному", "болезнь", 6);
+        addTerm(db, "больная", "болезнь", 6);
+        addTerm(db, "больные", "болезнь", 6);
+
+        addTerm(db, "болезнь", "болезнь", 6);
+        addTerm(db, "болезни", "болезнь", 6);
+
+        addTerm(db, "смерть", "болезнь", 6);
+        addTerm(db, "смерти", "болезнь", 6);
+
+        addTerm(db, "умер", "болезнь", 6);
+        addTerm(db, "умерла", "болезнь", 6);
+        addTerm(db, "умерли", "болезнь", 6);
+
+
+        // 18+
         addTerm(db, "выпить", "алкоголь", 18);
         addTerm(db, "употребить", "алкоголь", 18);
         addTerm(db, "употребить", "наркотики", 18);
         addTerm(db, "курить", "табак", 18);
 
+
         //////////////////////////////////////////////////////////////////////////
         // en
-        addTerm(db, "drink", "алкоголь", 18);
-        addTerm(db, "drunk", "алкоголь", 18);
-        addTerm(db, "use", "наркотики", 18);
-        addTerm(db, "smoke", "табак", 18);
+        // 6+
+        addTerm(db, "flu", "disease", 6);
+        addTerm(db, "flus", "disease", 6);
+        addTerm(db, "flu-like", "disease", 6);
+        addTerm(db, "cold", "disease", 6);
+        addTerm(db, "colds", "disease", 6);
+        addTerm(db, "coldness", "disease", 6);
+        addTerm(db, "coldly", "disease", 6);
+        addTerm(db, "ARI", "disease", 6);
+        addTerm(db, "ARIs", "disease", 6);
+        addTerm(db, "cough", "disease", 6);
+        addTerm(db, "coughs", "disease", 6);
+        addTerm(db, "pain", "disease", 6);
+        addTerm(db, "sick", "disease", 6);
+        addTerm(db, "sickness", "disease", 6);
+        addTerm(db, "disease", "disease", 6);
+        addTerm(db, "died", "disease", 6);
+
+        addTerm(db, "accident", "accident", 6);
+        addTerm(db, "disaster", "accident", 6);
+        addTerm(db, "fall", "accident", 6);
+        addTerm(db, "injury", "accident", 6);
+        addTerm(db, "bruise", "accident", 6);
+        addTerm(db, "fracture", "accident", 6);
+        addTerm(db, "incident", "accident", 6);
+        addTerm(db, "event", "accident", 6);
+        addTerm(db, "misfortune", "accident", 6);
+
+
+        // 18+
+        addTerm(db, "drink", "alcohol", 18);
+        addTerm(db, "drunk", "alcohol", 18);
+        addTerm(db, "use", "drugs", 18);
+        addTerm(db, "smoke", "smoke", 18);
 
         System.out.println("Database created and filled with initial data.");
     }
@@ -85,6 +155,8 @@ public class DatabaseOfTerms extends SQLiteOpenHelper {
     public void printAllTerms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+
         try {
             if (cursor.moveToFirst()) {
                 int termIndex = cursor.getColumnIndex(COLUMN_TERM);

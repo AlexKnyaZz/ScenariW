@@ -322,27 +322,31 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
                         // проверяем возрастную категорию
                         System.out.println("fillData : пробуем выявить возрастную категорию...");
 
-
                         // создаем экземпляр DatabaseOfTerms
                         DatabaseOfTerms database = new DatabaseOfTerms(edit_page_1.this);
 
                         // вызываем метод через экземпляр
-
                         String[] words = te.split("\\s+"); // Разделить строку на отдельные слова
-
                         int ageCategory = 0;
                         termins = 0;
-
                         // пока есть слова
                         for (String word : words) {
+                            word = word.toLowerCase();
                             ageCategory = database.getAgeCategoryByTerm(word);
                             if (ageCategory == -1) { // если слова нет в бд, возрастная  категория этого слова = 0
                                 ageCategory = 0;
                             }
+
                             System.out.println("Word: " + word + ", Age Category: " + ageCategory);
+
+                            System.out.println("a : ageCategory = " + ageCategory + ", ageCategoryGlobal = " + ageCategoryGlobal);
+
                             if (ageCategory >= ageCategoryGlobal) { // если слово есть в бд и его категория больше глобальной
                                 ageCategoryGlobal = ageCategory; // обновляем глобальное
                                 termins += 1; // прибавляем термин, отвечающий за кол-во таких слов
+
+                                System.out.println("a : ageCategory = " + ageCategory + ", ageCategoryGlobal был изменён на " + ageCategoryGlobal);
+
                             } else {
                                 ageCategory = ageCategoryGlobal; //
                             }
@@ -354,17 +358,13 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
                         } else {
                             ageCategoryGlobal = 0;
                         }
-
-
                         System.out.println("fillData : определена  возрастная категория: " + ageCategoryGlobal);
-
                         // делаем видимой подсказку ассистента
                         assist1.setVisibility(View.INVISIBLE);
                         assist2.setVisibility(View.INVISIBLE);
                         assist3.setVisibility(View.INVISIBLE);
                         assistent.setVisibility(View.VISIBLE);
                         categoryAssist.setVisibility(View.VISIBLE);
-
                         categoryAssist.setText(old + " " + ageCategory + "+");
 
                     }
@@ -411,6 +411,54 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
                         System.out.println("tag = " + ta);
 
                         saveData(te, ta);
+
+                        ///////////////////////////////////////////////////
+
+                        // проверяем возрастную категорию
+                        System.out.println("fillData : пробуем выявить возрастную категорию...");
+
+                        // создаем экземпляр DatabaseOfTerms
+                        DatabaseOfTerms database = new DatabaseOfTerms(edit_page_1.this);
+
+                        // вызываем метод через экземпляр
+                        String[] words = te.split("\\s+"); // Разделить строку на отдельные слова
+                        int ageCategory = 0;
+                        termins = 0;
+                        // пока есть слова
+                        for (String word : words) {
+                            word = word.toLowerCase();
+                            ageCategory = database.getAgeCategoryByTerm(word);
+                            if (ageCategory == -1) { // если слова нет в бд, возрастная  категория этого слова = 0
+                                ageCategory = 0;
+                            }
+                            System.out.println("Word: " + word + ", Age Category: " + ageCategory);
+                            System.out.println("b : ageCategory = " + ageCategory + ", ageCategoryGlobal = " + ageCategoryGlobal);
+
+                            if (ageCategory >= ageCategoryGlobal) { // если слово есть в бд и его категория больше глобальной
+                                ageCategoryGlobal = ageCategory; // обновляем глобальное
+                                termins += 1; // прибавляем термин, отвечающий за кол-во таких слов
+
+                                System.out.println("b : ageCategory = " + ageCategory + ", ageCategoryGlobal был изменён на " + ageCategoryGlobal);
+                            } else {
+                                ageCategory = ageCategoryGlobal; //
+                            }
+                        }
+                        System.out.println("количество найденных терминов из БД = " + termins);
+
+                        if (termins > 0) {
+                            //ageCategoryGlobal = ageCategoryGlobal;
+                        } else {
+                            ageCategoryGlobal = 0;
+                        }
+                        System.out.println("fillData : определена  возрастная категория: " + ageCategoryGlobal);
+                        // делаем видимой подсказку ассистента
+                        assist1.setVisibility(View.INVISIBLE);
+                        assist2.setVisibility(View.INVISIBLE);
+                        assist3.setVisibility(View.INVISIBLE);
+                        assistent.setVisibility(View.VISIBLE);
+                        categoryAssist.setVisibility(View.VISIBLE);
+                        categoryAssist.setText(old + " " + ageCategory + "+");
+
                     }
                 });
 
