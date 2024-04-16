@@ -65,16 +65,17 @@
                     android:layout_marginTop="360dp"
                     android:layout_centerHorizontal="true"
                     android:contentDescription="shape_with_text_ek2"
-                    android:background="@drawable/roundstyle2"
-                    android:backgroundTint="@color/ccc"></ImageView>
+                    android:background="@drawable/roundstyle2">
+
+                </ImageView>
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="55dp"
-                    android:layout_marginTop="585dp"
                     android:layout_marginStart="250dp"
+                    android:layout_marginTop="585dp"
                     android:background="@drawable/roundstyle2"
-                    android:backgroundTint="@color/___________________________________________________________________color"></ImageView>
+                    android:backgroundTint="@color/colorPrimaryDark"></ImageView>
 
                 <ImageView
                     android:layout_width="20dp"
@@ -110,13 +111,13 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="690dp"
                     android:background="@drawable/roundstyle2"
-                    android:backgroundTint="@color/bbb"
+                    android:backgroundTint="#9b63bf"
                     android:gravity="center"
                     android:onClick="toReturn"
 
                     android:text="@string/Return"
                     android:textAlignment="center"
-                    android:textColor="@color/___________________________________________________________________color" />
+                    android:textColor="@color/white" />
 
                 <ImageView
                     android:id="@+id/shape_with_text_ek3"
@@ -126,7 +127,6 @@
                     android:layout_marginStart="19dp"
                     android:layout_marginTop="58dp"
                     android:background="@drawable/roundstyle2"
-                    android:backgroundTint="@color/ccc"
                     android:contentDescription="shape_with_text_ek3"
                     android:src="@drawable/shape_with_text_ek3" />
 
@@ -201,33 +201,33 @@
                         android:id="@+id/addRow"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/bbb"
-                        android:background="@drawable/table_add_row_below" />
+                        android:background="@drawable/table_add_row_below"
+                        android:backgroundTint="#c4b8ff" />
 
                     <Button
                         android:id="@+id/removeRow"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/bbb"
-                        android:background="@drawable/table_delete_row_svgrepo_com" />
+                        android:background="@drawable/table_delete_row_svgrepo_com"
+                        android:backgroundTint="#c4b8ff" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/bbb"
-                        android:background="@drawable/text_heading_svgrepo_com" />
+                        android:background="@drawable/text_heading_svgrepo_com"
+                        android:backgroundTint="#c4b8ff" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/bbb"
-                        android:background="@drawable/ellipsis_svgrepo_com" />
+                        android:background="@drawable/ellipsis_svgrepo_com"
+                        android:backgroundTint="#c4b8ff" />
 
                     <Button
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:backgroundTint="@color/bbb"
-                        android:background="@drawable/checkmark_svgrepo_com" />
+                        android:background="@drawable/checkmark_svgrepo_com"
+                        android:backgroundTint="#c4b8ff" />
 
                 </LinearLayout>
 
@@ -253,19 +253,19 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:background="@drawable/squarestyle"
-                        android:backgroundTint="@color/bbb"
-                        android:rotation="60.0"
+                        android:layout_marginStart="225dp"
                         android:layout_marginTop="605dp"
-                        android:layout_marginStart="225dp" />
+                        android:background="@drawable/squarestyle"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:rotation="60.0" />
 
                     <ImageView
                         android:layout_width="200dp"
                         android:layout_height="45dp"
-                        android:layout_marginTop="585dp"
                         android:layout_marginStart="45dp"
+                        android:layout_marginTop="585dp"
                         android:background="@drawable/roundstyle2"
-                        android:backgroundTint="@color/bbb" />
+                        android:backgroundTint="@color/colorPrimary" />
 
                     <TextView
                         android:id="@+id/assist1"
@@ -318,6 +318,7 @@
 
                         android:textSize="12dp"
                         android:text="@string/categoryAssist"
+                        android:textColor="@color/white"
 
                         android:visibility="invisible"
                         />

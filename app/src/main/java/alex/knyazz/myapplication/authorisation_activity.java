@@ -17,18 +17,12 @@
 
 package alex.knyazz.myapplication;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-
-
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.io.Console;
-
-import alex.knyazz.myapplication.R;
+    import android.app.Activity;
+    import android.content.Intent;
+    import android.os.Bundle;
+    import android.view.View;
+    import android.widget.ImageView;
+    import android.widget.TextView;
 
 	public class authorisation_activity extends Activity {
 
@@ -73,10 +67,6 @@ import alex.knyazz.myapplication.R;
 		shape_with_text_ek3 = (ImageView) findViewById(R.id.shape_with_text_ek3);
 		shape_with_text_ek4 = (ImageView) findViewById(R.id.shape_with_text_ek4);
 		shape_with_text_ek5 = (ImageView) findViewById(R.id.shape_with_text_ek5);
-		shape_with_text_ek6 = (ImageView) findViewById(R.id.shape_with_text_ek6);
-		shape_with_text_ek7 = (ImageView) findViewById(R.id.shape_with_text_ek7);
-		shape_with_text_ek8 = (ImageView) findViewById(R.id.shape_with_text_ek8);
-		shape_with_text_ek9 = (ImageView) findViewById(R.id.shape_with_text_ek9);
 		___________________ = (TextView) findViewById(R.id.___________________);
 		ivan293 = (TextView) findViewById(R.id.ivan293);
 		________ = (TextView) findViewById(R.id.________);

@@ -1,5 +1,6 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="wrap_content" >
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
 	<!--
 	/*
 	 *	This content is generated from the API File Info.
@@ -65,8 +66,7 @@
 					android:layout_marginTop="190dp"
 					android:layout_centerHorizontal="true"
 					android:contentDescription="shape_with_text_ek2"
-					android:background="@drawable/roundstyle2"
-					android:backgroundTint="@color/ccc" />
+                    android:background="@drawable/roundstyle2" />
 
 
 
@@ -89,13 +89,13 @@
 						android:layout_marginStart="0dp"
 						android:layout_marginTop="0dp"
 						android:background="@drawable/roundstyle2"
-						android:backgroundTint="@color/bbb"
+                        android:backgroundTint="#9b63bf"
 						android:gravity="center"
 						android:onClick="toCreate2"
 
 						android:text="@string/Create1"
 						android:textAlignment="center"
-						android:textColor="@color/___________________________________________________________________color" />
+                        android:textColor="@color/white" />
 
 				</RelativeLayout>
 
@@ -109,13 +109,14 @@
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="690dp"
 					android:background="@drawable/roundstyle2"
-					android:backgroundTint="@color/bbb"
+                    android:backgroundTint="#9b63bf"
 					android:gravity="center"
 					android:onClick="toReturn"
 
 					android:text="@string/Return"
 					android:textAlignment="center"
-					android:textColor="@color/___________________________________________________________________color" />
+                    android:textColor="@color/white" />
+
 				<Button
 					android:id="@+id/CreateWLink"
 					android:layout_width="337dp"
@@ -125,13 +126,13 @@
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="510dp"
 					android:background="@drawable/roundstyle2"
-					android:backgroundTint="@color/ccc"
+                    android:backgroundTint="#809B63BF"
 					android:gravity="center"
 					android:onClick="startNewActivity"
 
 					android:text="@string/CreateWLink"
 					android:textAlignment="center"
-					android:textColor="@color/___________________________________________________________________color" />
+                    android:textColor="@color/white" />
 
 				<ImageView
 					android:id="@+id/shape_with_text_ek1"
@@ -167,7 +168,6 @@
 					android:layout_marginStart="19dp"
 					android:layout_marginTop="58dp"
 					android:background="@drawable/roundstyle2"
-					android:backgroundTint="@color/bbb"
 					android:contentDescription="shape_with_text_ek3"
 					android:src="@drawable/shape_with_text_ek3"
 					/>
@@ -186,18 +186,19 @@
 					android:layout_centerHorizontal="true"
 					android:gravity="center"
 					android:textSize="10pt"
-					android:textColor="@color/___________________________________________________________________color"
+                    android:textColor="@color/white"
 					android:layout_marginLeft="0dp"
 					android:layout_marginTop="360dp"
 					android:layout_width="330dp"
 					android:layout_height="69.4dp"
 					android:text="@string/Create1Other"
 
+
 					/>
 
 				<TextView android:id="@+id/___________________"
 					android:textSize="24sp"
-					android:textColor="@color/___________________________________________________________________color"
+                    android:textColor="@color/colorPrimaryDark"
 					android:layout_marginLeft="59dp"
 					android:layout_marginTop="9dp"
 					android:layout_width="320dp"

@@ -91,13 +91,13 @@
 						android:layout_marginStart="0dp"
 						android:layout_marginTop="0dp"
 						android:background="@drawable/roundstyle2"
-						android:backgroundTint="@color/bbb"
+                        android:backgroundTint="#9b63bf"
 						android:gravity="center"
 						android:onClick="toCreate1"
 
 						android:text="@string/Create"
 						android:textAlignment="center"
-						android:textColor="@color/___________________________________________________________________color" />
+                        android:textColor="@color/white" />
 
 				</RelativeLayout>
 
@@ -111,13 +111,13 @@
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="690dp"
 					android:background="@drawable/roundstyle2"
-					android:backgroundTint="@color/bbb"
+                    android:backgroundTint="#9b63bf"
 					android:gravity="center"
 					android:onClick="toReturn"
 
 					android:text="@string/Return"
 					android:textAlignment="center"
-					android:textColor="@color/___________________________________________________________________color" />
+                    android:textColor="@color/white" />
 
 				<ImageView
 					android:id="@+id/shape_with_text_ek3"
@@ -127,7 +127,6 @@
 					android:layout_marginStart="19dp"
 					android:layout_marginTop="58dp"
 					android:background="@drawable/roundstyle2"
-					android:backgroundTint="@color/bbb"
 					android:contentDescription="shape_with_text_ek3"
 					android:src="@drawable/shape_with_text_ek3"
 					/>
@@ -190,17 +189,17 @@
 					android:gravity="center_horizontal"
 					/>
 
-				<TextView android:id="@+id/___________________"
-					android:textSize="24sp"
-					android:textColor="@color/___________________________________________________________________color"
+                <TextView
+                    android:id="@+id/___________________"
+                    android:layout_width="277.4dp"
+                    android:layout_height="44.4dp"
+                    android:layout_centerHorizontal="true"
 					android:layout_marginLeft="59dp"
 					android:layout_marginTop="9dp"
-					android:layout_width="277.4dp"
-					android:layout_height="44.4dp"
+                    android:gravity="center"
 					android:text="@string/WinScenarious"
-					android:gravity="center"
-					android:layout_centerHorizontal="true"
-					/>
+                    android:textColor="@color/purple_700"
+                    android:textSize="24sp" />
 
 
 

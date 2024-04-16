@@ -1,20 +1,7 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="wrap_content" >
-	<!-- 
-	/*
-	 *	This content is generated from the API File Info.
-	 *	(Alt+Shift+Ctrl+I).
-	 *
-	 *	@desc 		
-	 *	@file 		frame_3
-	 *	@date 		Monday 25th of March 2024 03:56:20 PM
-	 *	@title 		Page 1
-	 *	@author 	
-	 *	@keywords 	
-	 *	@generator 	Export Kit v1.3.figma
-	 *
-	 */
-	-->
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
 	<RelativeLayout android:id="@+id/frame_3"
 		android:layout_width="wrap_content"
 		android:layout_height="match_parent" >
@@ -29,31 +16,32 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"/>
 
-			<TextView android:id="@+id/AppName"
-				android:textSize="24sp"
-				android:textColor="@color/___________________________________________________________________color"
-				android:layout_marginLeft="59dp"
-				android:layout_marginTop="9dp"
+			<TextView
+				android:id="@+id/AppName"
 				android:layout_width="277.4dp"
 				android:layout_height="44.4dp"
-				android:text="@string/AppName_string"
-				android:gravity="center"
 				android:layout_centerHorizontal="true"
-				/>
+				android:layout_marginLeft="59dp"
+				android:layout_marginTop="9dp"
+				android:gravity="center"
+				android:text="@string/AppName_string"
+				android:textColor="@color/purple_700"
+				android:textSize="24sp" />
 
-			<ImageView android:id="@+id/shape_with_text_ek3"
-				android:src="@drawable/shape_with_text_ek3"
-				android:contentDescription="shape_with_text_ek3"
-				android:layout_marginStart="19dp"
-				android:layout_marginTop="58dp"
+			<ImageView
+				android:id="@+id/shape_with_text_ek3"
 				android:layout_width="337dp"
 				android:layout_height="245dp"
+				android:layout_centerHorizontal="true"
+				android:layout_marginStart="19dp"
+				android:layout_marginTop="58dp"
 				android:background="@drawable/roundstyle2"
-				android:backgroundTint="@color/ccc"
-				android:layout_centerHorizontal="true"/>
+				android:contentDescription="shape_with_text_ek3"
+				android:src="@drawable/shape_with_text_ek3" />
 
 			<ImageView android:id="@+id/shape_with_text_ek4"
-				android:src="@drawable/log"
+				android:background="@drawable/log"
+				android:backgroundTint="@color/white"
 				android:contentDescription="shape_with_text_ek4"
 				android:layout_centerHorizontal="true"
 				android:layout_marginStart="79dp"
@@ -65,91 +53,73 @@
 				android:id="@+id/textView"
 				android:layout_width="350dp"
 				android:layout_height="40sp"
-				android:gravity="center"
-				android:layout_centerHorizontal="true"
 				android:layout_alignBaseline="@id/shape_with_text_ek3"
+				android:layout_centerHorizontal="true"
 				android:layout_margin="330dp"
+				android:gravity="center"
 				android:text="@string/MainText_string"
-				android:textColor="@color/___________________________________________________________________color"
+				android:textColor="#9b63bf"
 				android:textSize="10pt" />
 
+			<LinearLayout
+				android:layout_width="380dp"
+				android:layout_height="300dp"
+				android:layout_marginTop="300dp"
+				android:gravity="center"
+
+				android:divider="@drawable/divider"
+				android:showDividers="middle">
+
+				<Button
+					android:id="@+id/Scenarious"
+					android:layout_width="100dp"
+					android:layout_height="100dp"
+					android:background="@drawable/roundstyle2"
+					android:contentDescription="shape_with_text_ek3"
+					android:onClick="toScenarious"
+					android:text="@string/Scenarious_string"
+					android:textColor="@color/white" />
+
+				<Button
+					android:id="@+id/UserInfo"
+					android:layout_width="100dp"
+					android:layout_height="100dp"
+					android:background="@drawable/roundstyle"
+					android:backgroundTint="#9b63bf"
+					android:contentDescription="shape_with_text_ek3"
+					android:src="@drawable/brush"
+
+					android:text="@string/UserInfo_string"
+					android:textColor="@color/white" />
 
 
-			<Button android:id="@+id/UserInfo"
-				android:src="@drawable/brush"
-				android:contentDescription="shape_with_text_ek3"
-				android:layout_marginStart="145dp"
-				android:layout_marginTop="400dp"
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:background="@drawable/roundstyle"
-				android:backgroundTint="@color/ccc"
-
-				android:text="@string/UserInfo_string"
-				android:textColor="@color/___________________________________________________________________color"
+				<Button
+					android:layout_width="100dp"
+					android:layout_height="100dp"
+					android:background="@drawable/roundstyle2"
+					android:contentDescription="shape_with_text_ek3"
+					android:src="@drawable/shape_with_text_ek3"
+					android:text="@string/Help_string"
+					android:textColor="@color/white" />
 				/>
 
-			<Button
-				android:id="@+id/Scenarious"
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:layout_alignStart="@id/shape_with_text_ek3"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="400dp"
-				android:background="@drawable/roundstyle"
-				android:backgroundTint="@color/ccc"
-				android:contentDescription="shape_with_text_ek3"
-				android:onClick="toScenarious"
-				android:text="@string/Scenarious_string"
-				android:textColor="@color/___________________________________________________________________color" />
+			</LinearLayout>
 
-
-
-			<Button
-				android:src="@drawable/shape_with_text_ek3"
-				android:contentDescription="shape_with_text_ek3"
-				android:layout_marginStart="270dp"
-				android:layout_marginTop="400dp"
-				android:layout_alignEnd="@id/shape_with_text_ek3"
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:background="@drawable/roundstyle"
-				android:backgroundTint="@color/ccc"
-				android:text="@string/Help_string"
-				android:textColor="@color/___________________________________________________________________color"
-				/>
-
-			<Button
-				android:src="@drawable/shape_with_text_ek3"
-				android:contentDescription="shape_with_text_ek3"
-				android:layout_marginStart="145dp"
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="294dp"
 				android:layout_marginTop="550dp"
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:background="@drawable/roundstyle"
-				android:backgroundTint="@color/ccc"/>
 
-			<Button
-				android:src="@drawable/shape_with_text_ek3"
-				android:contentDescription="shape_with_text_ek3"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="550dp"
-				android:layout_alignStart="@id/shape_with_text_ek3"
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:background="@drawable/roundstyle"
-				android:backgroundTint="@color/ccc"/>
+				>
 
-			<Button
-				android:src="@drawable/shape_with_text_ek3"
-				android:contentDescription="shape_with_text_ek3"
-				android:layout_marginStart="270dp"
-				android:layout_marginTop="550dp"
-				android:layout_alignEnd="@id/shape_with_text_ek3"
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:background="@drawable/roundstyle"
-				android:backgroundTint="@color/ccc"/>
+				<ImageView
+					android:id="@+id/imageView2"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:src="@drawable/playing_video_game_character" />
+
+			</RelativeLayout>
+
 
 		</RelativeLayout>
 
