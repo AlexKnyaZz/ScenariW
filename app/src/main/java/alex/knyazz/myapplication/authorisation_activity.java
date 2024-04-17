@@ -68,7 +68,6 @@ package alex.knyazz.myapplication;
 		shape_with_text_ek4 = (ImageView) findViewById(R.id.shape_with_text_ek4);
 		shape_with_text_ek5 = (ImageView) findViewById(R.id.shape_with_text_ek5);
 		___________________ = (TextView) findViewById(R.id.___________________);
-		ivan293 = (TextView) findViewById(R.id.ivan293);
 		________ = (TextView) findViewById(R.id.________);
 	
 		

@@ -68,7 +68,8 @@
 					android:contentDescription="shape_with_text_ek1"
 					android:gravity="center" />
 
-				<TextView
+
+                <TextView
 					android:id="@+id/_____"
 					android:layout_width="49.4dp"
 					android:layout_height="26.4dp"
@@ -214,7 +215,8 @@
 					android:textColor="@color/___________________________________________________________________color"
 					android:textSize="14sp" />
 
-				<TextView android:id="@+id/________"
+
+                <TextView android:id="@+id/________"
 					android:textSize="14sp"
 					android:textColor="@color/___________________________________________________________________color"
 					android:layout_marginLeft="162dp"

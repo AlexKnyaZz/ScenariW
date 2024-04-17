@@ -128,7 +128,6 @@
 					android:background="@drawable/roundstyle2"
                     android:backgroundTint="#809B63BF"
 					android:gravity="center"
-					android:onClick="startNewActivity"
 
 					android:text="@string/CreateWLink"
 					android:textAlignment="center"
