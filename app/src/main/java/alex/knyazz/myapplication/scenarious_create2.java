@@ -114,7 +114,7 @@
 
 
             // Автозаполнение списка "Выберите тип"
-            autoCompleteTextView = findViewById(R.id.auto_complete_txt);
+            autoCompleteTextView = findViewById(R.id.type_input);
 
             adapterItems = new ArrayAdapter<String>(this, R.layout.list_item, item);
             autoCompleteTextView.setAdapter(adapterItems);
@@ -126,7 +126,7 @@
                 }
             });
             // Автозаполнение списка "Выберите роль"
-            autoCompleteTextView1 = findViewById(R.id.auto_complete_txt1);
+            autoCompleteTextView1 = findViewById(R.id.role_input);
 
             adapterItems1 = new ArrayAdapter<String>(this, R.layout.list_item, item1);
             autoCompleteTextView1.setAdapter(adapterItems1);

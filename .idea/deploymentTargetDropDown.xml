@@ -2,7 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="ageCategorySettingTest">
+        <State />
+      </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="category18()">
+        <State />
+      </entry>
+      <entry key="fillText">
+        <State />
+      </entry>
+      <entry key="testAgeCategory()">
+        <State />
+      </entry>
+      <entry key="testButtonClick()">
         <State />
       </entry>
     </value>

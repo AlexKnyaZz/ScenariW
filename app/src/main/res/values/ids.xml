@@ -21,7 +21,7 @@
     <item name="Scenarious" type="id" />
     <item name="CreateNew" type="id" />
     <item name="CreateWLink" type="id" />
-    <item name="auto_complete_txt" type="id" />
+    <item name="type_input" type="id" />
     <item name="scenName" type="id" />
     <item name="NameOfScene" type="id" />
     <item name="TypeOfScene" type="id" />
