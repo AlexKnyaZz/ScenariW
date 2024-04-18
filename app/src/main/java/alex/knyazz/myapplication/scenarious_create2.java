@@ -60,8 +60,19 @@
         String role;
         String type;
 
-        String[] item = {"Story", "Dialogue", "Quest"};
-        String[] item1 = {"Designer", "Scenarist", "Programmer", "Sound Engineer"};
+        String Story;
+        String Dialogue;
+        String Quest;
+        String Designer;
+        String Scenarist;
+        String Programmer;
+        String SoundEngineer;
+
+        //String[] item = {"Story", "Dialogue", "Quest"};
+        //String[] item = {getString(R.string.Story), getString(R.string.Dialogue), getString(R.string.Quest)};
+
+        //String[] item1 = {"Designer", "Scenarist", "Programmer", "Sound Engineer"};
+        //String[] item1 = {getString(R.string.Designer), getString(R.string.Scenarist), getString(R.string.Programmer), getString(R.string.SoundEngineer)};
         AutoCompleteTextView autoCompleteTextView;
         AutoCompleteTextView autoCompleteTextView1;
         ArrayAdapter<String> adapterItems;
@@ -111,6 +122,19 @@
             __________________________________________________________________ = (TextView) findViewById(R.id.__________________________________________________________________);
             ___________________ = (TextView) findViewById(R.id.___________________);
             scenName = (EditText) findViewById(R.id.scenName);
+
+            Story = (String) getString(R.string.Story);
+            Dialogue = (String) getString(R.string.Dialogue);
+            Quest = (String) getString(R.string.Quest);
+
+            Designer = (String) getString(R.string.Designer);
+            Scenarist = (String) getString(R.string.Scenarist);
+            Programmer = (String) getString(R.string.Programmer);
+            SoundEngineer = (String) getString(R.string.SoundEngineer);
+
+            String[] item = {getString(R.string.Story), getString(R.string.Dialogue), getString(R.string.Quest)};
+            //String[] item1 = {"Designer", "Scenarist", "Programmer", "Sound Engineer"};
+            String[] item1 = {getString(R.string.Designer), getString(R.string.Scenarist), getString(R.string.Programmer), getString(R.string.SoundEngineer)};
 
 
             // Автозаполнение списка "Выберите тип"

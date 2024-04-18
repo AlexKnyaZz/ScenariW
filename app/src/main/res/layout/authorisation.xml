@@ -202,6 +202,33 @@
 					android:textColor="@color/purple_700"
 					android:textSize="24sp" />
 
+				<EditText
+					android:id="@+id/login"
+					android:layout_width="300dp"
+					android:layout_height="39dp"
+					android:layout_marginLeft="0dp"
+					android:layout_marginTop="434dp"
+					android:hint="@string/login_string"
+
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+
+					/>
+
+				<EditText
+					android:id="@+id/password"
+					android:layout_width="300dp"
+					android:layout_height="39dp"
+					android:layout_marginLeft="0dp"
+					android:layout_marginTop="504dp"
+					android:hint="@string/Password_string"
+
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+
+					/>
+
+				<!--
 				<TextView
 					android:id="@+id/ivan293"
 					android:layout_width="68.4dp"
@@ -214,8 +241,10 @@
 
 					android:textColor="@color/___________________________________________________________________color"
 					android:textSize="14sp" />
+					-->
 
 
+				<!--
                 <TextView android:id="@+id/________"
 					android:textSize="14sp"
 					android:textColor="@color/___________________________________________________________________color"
@@ -227,6 +256,7 @@
 					android:layout_centerHorizontal="true"
 					android:text="@string/_________string"
 					 />
+					 -->
 
 			</RelativeLayout>
 		</RelativeLayout>

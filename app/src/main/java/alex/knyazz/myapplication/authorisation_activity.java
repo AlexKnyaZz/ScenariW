@@ -17,12 +17,12 @@
 
 package alex.knyazz.myapplication;
 
-    import android.app.Activity;
-    import android.content.Intent;
-    import android.os.Bundle;
-    import android.view.View;
-    import android.widget.ImageView;
-    import android.widget.TextView;
+	import android.app.Activity;
+	import android.content.Intent;
+	import android.os.Bundle;
+	import android.view.View;
+	import android.widget.ImageView;
+	import android.widget.TextView;
 
 	public class authorisation_activity extends Activity {
 
@@ -46,7 +46,6 @@ package alex.knyazz.myapplication;
 	private ImageView shape_with_text_ek9;
 	private TextView ___________________;
 	private TextView ivan293;
-	private TextView ________;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +67,6 @@ package alex.knyazz.myapplication;
 		shape_with_text_ek4 = (ImageView) findViewById(R.id.shape_with_text_ek4);
 		shape_with_text_ek5 = (ImageView) findViewById(R.id.shape_with_text_ek5);
 		___________________ = (TextView) findViewById(R.id.___________________);
-		________ = (TextView) findViewById(R.id.________);
 	
 		
 		//custom code goes here
