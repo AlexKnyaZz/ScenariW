@@ -594,6 +594,10 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         ed1.commit();
     }
 
+    public void checkFileWords(){
+        String text;
+        //sPref = getSharedPreferences(filename, MODE_PRIVATE);
+    }
 
     public void toCreate1(View v) {
         //Intent intent = new Intent(edit_page.this, scenarious_create1.class);

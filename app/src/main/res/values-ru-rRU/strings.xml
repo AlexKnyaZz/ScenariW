@@ -48,4 +48,12 @@
     <string name="Scenarist">Сценарист</string>
     <string name="Programmer">Программист</string>
     <string name="SoundEngineer">Звукорежиссёр</string>
+    <string name="registration_string">Введите ваш логин</string>
+    <string name="registration_string_pass">Введите ваш пароль</string>
+    <string name="email">Введите ваш email</string>
+    <string name="email_string">Email</string>
+    <string name="birthday">Введите дату рождения</string>
+    <string name="birthday_string">Дата рождения</string>
+    <string name="btnSignUp">Зарегистрироваться</string>
+    <string name="toLogIn">У меня есть аккаунт</string>
 </resources>

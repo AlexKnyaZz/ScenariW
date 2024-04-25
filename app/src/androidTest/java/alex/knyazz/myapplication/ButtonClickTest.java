@@ -25,7 +25,7 @@ public class ButtonClickTest {
         // Дождитесь загрузки активности
         //onView(isRoot()).perform(waitFor(2000));
 
-        onView(ViewMatchers.withId(R.id._bg__frame_5_ek1)).perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.btnLogin)).perform(ViewActions.click());
 
         // Дождитесь загрузки следующей активности
         //onView(isRoot()).perform(waitFor(2000));

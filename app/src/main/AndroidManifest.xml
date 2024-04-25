@@ -34,6 +34,7 @@
 		<activity android:name=".scenarious_create2"/>
 		<activity android:name=".edit_page" />
 		<activity android:name=".edit_page_1" />
+		<activity android:name=".registration" />
 
 	</application>
 

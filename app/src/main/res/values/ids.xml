@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="_bg__frame_3" type="id" />
+    <item name="registration" type="id" />
+    <item name="btnSignUp" type="id" />
     <item name="shape_with_text_ek10" type="id" />
     <item name="shape_with_text_ek11" type="id" />
     <item name="shape_with_text_ek12" type="id" />
@@ -38,4 +40,5 @@
     <item name="assist3" type="id" />
     <item name="assistent" type="id" />
     <item name="categoryAssist" type="id" />
+    <item name="email" type="id" />
 </resources>
