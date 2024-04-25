@@ -130,7 +130,7 @@
 
 
 					<Button
-						android:id="@+id/_bg__frame_5_ek1"
+						android:id="@+id/btnLogin"
 						android:layout_width="289dp"
 						android:layout_height="87dp"
 						android:layout_centerHorizontal="true"
