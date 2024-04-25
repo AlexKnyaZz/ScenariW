@@ -61,7 +61,7 @@
         private ImageView shape_with_text_ek7;
         private ImageView shape_with_text_ek8;
         private ImageView shape_with_text_ek9;
-        private TextView ___________________;
+        private TextView ___________________, forgot;
         private EditText loginEditText;
         private EditText passwordEditText;
         private Button btnLogin;
@@ -95,6 +95,9 @@
 
             btnLogin = (Button) findViewById(R.id.btnLogin);
             btnLogin.setOnClickListener(this);
+
+            forgot = (TextView) findViewById(R.id.forgot);
+            forgot.setOnClickListener(this);
 
 
 
@@ -195,6 +198,11 @@
 			startActivity(intent);
 		}
 
+        public void toUpdatePass() {
+            Intent intent = new Intent(authorisation_activity.this, ResetPasswordActivity.class);
+            startActivity(intent);
+        }
+
 		@Override
 		public void onClick(View v) {
 			int id = v.getId();
@@ -204,7 +212,9 @@
                 new SearchUserTask().execute(login, password);
 			} else if(id == R.id.__________________){
 				toRegistration();
-			}
+            } else if (id == R.id.forgot) {
+                toUpdatePass();
+            }
 		}
 	}
 	

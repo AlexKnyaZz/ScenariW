@@ -58,4 +58,9 @@
     <string name="toLogIn">У меня есть аккаунт</string>
     <string name="age">Ваш возраст: </string>
     <string name="forgot">Забыли пароль?</string>
+    <string name="back">Назад</string>
+    <string name="btnUpdatePass">Обновить пароль</string>
+    <string name="nameLogOrEmail">Введите логин или email</string>
+    <string name="nameNewPass">Введите новый пароль</string>
+    <string name="stringLogOrEmail">Логин/Email</string>
 </resources>

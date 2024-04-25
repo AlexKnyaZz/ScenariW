@@ -17,6 +17,12 @@
 	<string name="birthday_string">Birthday</string>
 	<string name="age">Your age is: </string>
 
+	<string name="back">Back</string>
+	<string name="btnUpdatePass">Update password</string>
+	<string name="nameLogOrEmail">Enter login or email</string>
+	<string name="nameNewPass">Enter new password</string>
+	<string name="stringLogOrEmail">Login/Email</string>
+
 	<string name="btnSignUp">Sign Up</string>
 	<string name="toLogIn">I have an account</string>
 
