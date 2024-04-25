@@ -163,6 +163,20 @@
 
 					/>
 
+				<TextView
+					android:id="@+id/forgot"
+					android:layout_width="200dp"
+					android:layout_height="25.4dp"
+					android:layout_centerHorizontal="true"
+					android:layout_marginLeft="113dp"
+					android:layout_marginTop="688dp"
+					android:gravity="center"
+					android:text="@string/forgot"
+					android:textColor="#9b63bf"
+					android:textSize="14sp"
+
+					/>
+
 				<ImageView android:id="@+id/shape_with_text_ek3"
 					android:src="@drawable/shape_with_text_ek3"
 					android:contentDescription="shape_with_text_ek3"

@@ -29,13 +29,17 @@
     import android.widget.TextView;
     import android.widget.Toast;
 
-	import androidx.core.content.ContextCompat;
-
-	import java.io.IOException;
+    import java.io.BufferedReader;
+    import java.io.IOException;
+    import java.io.InputStream;
+    import java.io.InputStreamReader;
     import java.io.OutputStream;
     import java.net.HttpURLConnection;
     import java.net.URL;
     import java.net.URLEncoder;
+    import java.nio.charset.StandardCharsets;
+    import java.security.MessageDigest;
+    import java.security.NoSuchAlgorithmException;
 
     public class authorisation_activity extends Activity implements View.OnClickListener {
 
@@ -100,23 +104,32 @@
         }
 
 
-		/*
-        public void loginUser() {
-            String login = loginEditText.getText().toString();
-            String password = passwordEditText.getText().toString();
-
-            // Отправка данных на сервер
-            new SendDataToServerTask().execute(login, password);
+        private String hashPassword(String password) {
+            try {
+                MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+                StringBuilder hexString = new StringBuilder();
+                for (byte b : hash) {
+                    String hex = Integer.toHexString(0xff & b);
+                    if (hex.length() == 1) hexString.append('0');
+                    hexString.append(hex);
+                }
+                return hexString.toString();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
 
-        private class SendDataToServerTask extends AsyncTask<String, Void, Boolean> {
+        private class SearchUserTask extends AsyncTask<String, Void, String> {
             @Override
-            protected Boolean doInBackground(String... params) {
+            protected String doInBackground(String... params) {
                 String login = params[0];
                 String password = params[1];
+                String hashedPassword = hashPassword(password);
                 try {
                     // Создаем URL сервера и подключаемся к нему
-                    URL url = new URL("http://scenariw.ru.swtest.ru/register.php");
+                    URL url = new URL("http://scenariw.ru.swtest.ru/searchUser.php");
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
                     // Устанавливаем метод запроса и параметры запроса
@@ -125,7 +138,7 @@
 
                     // Формируем данные для отправки
                     String postData = "login=" + URLEncoder.encode(login, "UTF-8") +
-                            "&password=" + URLEncoder.encode(password, "UTF-8");
+                            "&password=" + URLEncoder.encode(hashedPassword, "UTF-8");
 
                     // Отправляем данные на сервер
                     OutputStream os = urlConnection.getOutputStream();
@@ -133,33 +146,44 @@
                     os.flush();
                     os.close();
 
-                    // Проверяем код ответа сервера
-                    int responseCode = urlConnection.getResponseCode();
-                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                        return true; // Успешно отправлено
-                    } else {
-                        return false; // Ошибка при отправке
-                    }
+                    // Получаем ответ от сервера
+                    InputStream inputStream = urlConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    String response = bufferedReader.readLine();
+                    bufferedReader.close();
+                    inputStream.close();
+
+                    // Возвращаем ответ сервера
+                    return response;
                 } catch (IOException e) {
                     Log.e("Error", "Error sending data to server: " + e.getMessage());
-                    return false;
+                    return null;
                 }
             }
 
             @Override
-            protected void onPostExecute(Boolean result) {
-                if (result) {
-                    // Данные успешно отправлены
-                    Toast.makeText(authorisation_activity.this, "Данные успешно отправлены на сервер", Toast.LENGTH_SHORT).show();
+            protected void onPostExecute(String result) {
+                //Log.d("AuthorisationActivity", "Ответ сервера: " + result);
+                System.out.println("Ответ сервера: " + result);
+                if (result != null) {
+                    if (result.equals("User found")) {
+                        // Пользователь найден, выполните действия для авторизации
+                        Toast.makeText(authorisation_activity.this, "Вы вошли в систему", Toast.LENGTH_SHORT).show();
+                        startNewActivity();
+                    } else if (result.equals("Incorrect password")) {
+                        // Неправильный пароль
+                        Toast.makeText(authorisation_activity.this, "Неправильный пароль", Toast.LENGTH_SHORT).show();
+                    } else if (result.equals("Incorrect login")) {
+                        // Неправильный логин
+                        Toast.makeText(authorisation_activity.this, "Неправильный логин", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    // Ошибка при отправке данных
-                    Toast.makeText(authorisation_activity.this, "Ошибка при отправке данных на сервер", Toast.LENGTH_SHORT).show();
+                    // Ошибка при обработке ответа
+                    Toast.makeText(authorisation_activity.this, "Ошибка при обработке ответа", Toast.LENGTH_SHORT).show();
                 }
             }
-
         }
 
-		 */
 
         public void startNewActivity() {
             Intent intent = new Intent(authorisation_activity.this, frame_3_activity.class);
@@ -175,7 +199,9 @@
 		public void onClick(View v) {
 			int id = v.getId();
 			if (id == R.id.btnLogin){
-				startNewActivity();
+                String login = loginEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                new SearchUserTask().execute(login, password);
 			} else if(id == R.id.__________________){
 				toRegistration();
 			}

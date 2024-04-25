@@ -7,6 +7,7 @@
 	<string name="login_string">Login</string>
 	<string name="Welcome_string">Welcome!\nSign in or sign up to continue.</string>
 	<string name="Welcome1_string">Log in or log up to continue.</string>
+	<string name="forgot">Forgot your password?</string>
 
 	<string name="registration_string">Enter your login</string>
 	<string name="registration_string_pass">Enter your password</string>
@@ -14,6 +15,7 @@
 	<string name="email_string">Email</string>
 	<string name="birthday">Enter your birthday</string>
 	<string name="birthday_string">Birthday</string>
+	<string name="age">Your age is: </string>
 
 	<string name="btnSignUp">Sign Up</string>
 	<string name="toLogIn">I have an account</string>

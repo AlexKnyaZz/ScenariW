@@ -56,4 +56,6 @@
     <string name="birthday_string">Дата рождения</string>
     <string name="btnSignUp">Зарегистрироваться</string>
     <string name="toLogIn">У меня есть аккаунт</string>
+    <string name="age">Ваш возраст: </string>
+    <string name="forgot">Забыли пароль?</string>
 </resources>
