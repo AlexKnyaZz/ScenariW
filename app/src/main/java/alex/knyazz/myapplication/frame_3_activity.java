@@ -17,16 +17,16 @@
 
 package alex.knyazz.myapplication;
 
-    import android.app.Activity;
-    import android.content.Intent;
-    import android.os.Bundle;
-    import android.view.View;
-    import android.widget.Button;
-    import android.widget.ImageView;
-    import android.widget.RelativeLayout;
-    import android.widget.TextView;
+	import android.app.Activity;
+	import android.content.Intent;
+	import android.os.Bundle;
+	import android.view.View;
+	import android.widget.Button;
+	import android.widget.ImageView;
+	import android.widget.RelativeLayout;
+	import android.widget.TextView;
 
-public class frame_3_activity extends Activity {
+	public class frame_3_activity extends Activity implements View.OnClickListener {
 
 
 	private RelativeLayout frame_3;
@@ -53,7 +53,10 @@ public class frame_3_activity extends Activity {
 		shape_with_text_ek3 = (ImageView) findViewById(R.id.shape_with_text_ek3);
 		shape_with_text_ek4 = (ImageView) findViewById(R.id.shape_with_text_ek4);
 		textView = (TextView)  findViewById(R.id.textView);
+
 		UserInfo = (Button) findViewById(R.id.UserInfo);
+		UserInfo.setOnClickListener(this);
+
 		//---------------------------------
 
 		/*new Handler().postDelayed(new Runnable() {
@@ -73,6 +76,15 @@ public class frame_3_activity extends Activity {
 		Intent intent = new Intent(frame_3_activity.this, scenarious.class);
 		startActivity(intent);
 
+	}
+
+		@Override
+		public void onClick(View v) {
+			int id = v.getId();
+			if (id == R.id.UserInfo) {
+				Intent intent = new Intent(frame_3_activity.this, personal_cab.class);
+				startActivity(intent);
+			}
 	}
 }
 	

@@ -36,6 +36,7 @@
 		<activity android:name=".edit_page_1" />
 		<activity android:name=".registration" />
 		<activity android:name=".ResetPasswordActivity" />
+		<activity android:name=".personal_cab" />
 
 	</application>
 

@@ -63,4 +63,6 @@
     <string name="nameLogOrEmail">Введите логин или email</string>
     <string name="nameNewPass">Введите новый пароль</string>
     <string name="stringLogOrEmail">Логин/Email</string>
+    <string name="logOut">Выйти из аккаунта</string>
+    <string name="userName">Имя пользователя</string>
 </resources>

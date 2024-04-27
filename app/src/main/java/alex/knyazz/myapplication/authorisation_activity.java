@@ -18,7 +18,9 @@
     package alex.knyazz.myapplication;
 
     import android.app.Activity;
+    import android.content.Context;
     import android.content.Intent;
+    import android.content.SharedPreferences;
     import android.os.AsyncTask;
     import android.os.Bundle;
     import android.util.Log;
@@ -40,6 +42,8 @@
     import java.nio.charset.StandardCharsets;
     import java.security.MessageDigest;
     import java.security.NoSuchAlgorithmException;
+    import java.util.List;
+    import java.util.Map;
 
     public class authorisation_activity extends Activity implements View.OnClickListener {
 
@@ -82,10 +86,10 @@
             ______ = (TextView) findViewById(R.id.______);
             //_bg__frame_5_ek1 = (View) findViewById(R.id._bg__frame_5_ek1);
             //регистрация
-			__________________ = (TextView) findViewById(R.id.__________________);
-			__________________.setOnClickListener(this);
+            __________________ = (TextView) findViewById(R.id.__________________);
+            __________________.setOnClickListener(this);
 
-			shape_with_text_ek3 = (ImageView) findViewById(R.id.shape_with_text_ek3);
+            shape_with_text_ek3 = (ImageView) findViewById(R.id.shape_with_text_ek3);
             shape_with_text_ek4 = (ImageView) findViewById(R.id.shape_with_text_ek4);
             shape_with_text_ek5 = (ImageView) findViewById(R.id.shape_with_text_ek5);
             ___________________ = (TextView) findViewById(R.id.___________________);
@@ -98,7 +102,6 @@
 
             forgot = (TextView) findViewById(R.id.forgot);
             forgot.setOnClickListener(this);
-
 
 
             //custom code goes here
@@ -143,11 +146,36 @@
                     String postData = "login=" + URLEncoder.encode(login, "UTF-8") +
                             "&password=" + URLEncoder.encode(hashedPassword, "UTF-8");
 
+                    // Получаем куки
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                    String cookie = sharedPreferences.getString("Cookie", "");
+
+                    // Устанавливаем куки в заголовок запроса
+                    if (!cookie.isEmpty()) {
+                        urlConnection.setRequestProperty("Cookie", cookie);
+                    }
+
                     // Отправляем данные на сервер
                     OutputStream os = urlConnection.getOutputStream();
                     os.write(postData.getBytes());
                     os.flush();
                     os.close();
+
+                    // Сохраняем куки из ответа сервера
+                    Map<String, List<String>> headerFields = urlConnection.getHeaderFields();
+                    List<String> cookiesHeader = headerFields.get("Set-Cookie");
+                    if (cookiesHeader != null) {
+                        for (String cookieHeader : cookiesHeader) {
+                            // Сохраняем только нужные куки
+                            if (cookieHeader.contains("PHPSESSID")) {
+                                cookie = cookieHeader.split(";\\s*")[0];
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("Cookie", cookie);
+                                editor.apply();
+                                break;
+                            }
+                        }
+                    }
 
                     // Получаем ответ от сервера
                     InputStream inputStream = urlConnection.getInputStream();
@@ -163,6 +191,7 @@
                     return null;
                 }
             }
+
 
             @Override
             protected void onPostExecute(String result) {
@@ -193,29 +222,30 @@
             //System.out.println("succeeeeeeeeeeeeeeeeees");
             startActivity(intent);
         }
-		public void toRegistration(){
-			Intent intent = new Intent(authorisation_activity.this, registration.class);
-			startActivity(intent);
-		}
+
+        public void toRegistration() {
+            Intent intent = new Intent(authorisation_activity.this, registration.class);
+            startActivity(intent);
+        }
 
         public void toUpdatePass() {
             Intent intent = new Intent(authorisation_activity.this, ResetPasswordActivity.class);
             startActivity(intent);
         }
 
-		@Override
-		public void onClick(View v) {
-			int id = v.getId();
-			if (id == R.id.btnLogin){
+        @Override
+        public void onClick(View v) {
+            int id = v.getId();
+            if (id == R.id.btnLogin) {
                 String login = loginEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
                 new SearchUserTask().execute(login, password);
-			} else if(id == R.id.__________________){
-				toRegistration();
+            } else if (id == R.id.__________________) {
+                toRegistration();
             } else if (id == R.id.forgot) {
                 toUpdatePass();
             }
-		}
-	}
+        }
+    }
 	
 	

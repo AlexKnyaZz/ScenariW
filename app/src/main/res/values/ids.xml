@@ -41,4 +41,8 @@
     <item name="assistent" type="id" />
     <item name="categoryAssist" type="id" />
     <item name="email" type="id" />
+    <item name="userName" type="id" />
+    <item name="btnBack" type="id" />
+    <item name="btnLogOut" type="id" />
+    <item name="age" type="id" />
 </resources>
