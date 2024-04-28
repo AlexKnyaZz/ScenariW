@@ -224,6 +224,7 @@
                         android:backgroundTint="#c4b8ff" />
 
                     <Button
+                        android:id="@+id/dataToServer"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
                         android:background="@drawable/checkmark_svgrepo_com"

@@ -49,6 +49,7 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
     private Button Return;
     private Button addRow;
     private Button removeRow;
+    private Button dataToServer;
 
 
     SharedPreferences sPref;
@@ -113,6 +114,9 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         addRow = (Button) findViewById(R.id.addRow);
         addRow.setOnClickListener(this);
 
+        dataToServer = (Button) findViewById(R.id.dataToServer);
+        dataToServer.setOnClickListener(this);
+
         removeRow = (Button) findViewById(R.id.removeRow);
         removeRow.setOnClickListener(this);
 
@@ -136,6 +140,8 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         } else if (id == R.id.removeRow) {
             deleteRow();
             fillData();
+        } else if (id == R.id.dataToServer) {
+            sendToServer();
         } else {
             return;
         }
@@ -172,6 +178,7 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
 
         //lastId = sPref.getInt("lastId", 0);
         //rowsCount = sPref.getInt("rowsCount", 0);
+        sPref = getSharedPreferences(filename, MODE_PRIVATE);
 
         String lastIdString = sPref.getString("lastId", "");
         if (!lastIdString.isEmpty() && lastIdString.matches("\\d+")) {
@@ -224,41 +231,6 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         } else {
             assist1.setVisibility(View.INVISIBLE);
             categoryAssist.setVisibility(View.VISIBLE);
-
-            /*
-            if(asiCall == 0 | asiCall == 1){
-                System.out.println("должно отображаться assist2, ведь asiCal = "+asiCall);
-
-                // включаем подсказки ассистента
-                assistent.setVisibility(View.VISIBLE);
-                assist1.setVisibility(View.INVISIBLE);
-                assist2.setVisibility(View.VISIBLE);
-                categoryAssist.setVisibility(View.INVISIBLE);
-
-                asiCall += 1;
-                System.out.println("asiCal = "+asiCall);
-                System.out.println("--------------------");
-            } else if (asiCall == 2) {
-                System.out.println("должно отображаться assist 3, ведь asiCal = "+asiCall);
-                assist1.setVisibility(View.INVISIBLE);
-                assist2.setVisibility(View.INVISIBLE);
-                assist3.setVisibility(View.VISIBLE);
-                categoryAssist.setVisibility(View.INVISIBLE);
-                asiCall += 1;
-                System.out.println("--------------------");
-
-            } else{
-                System.out.println("должно отображаться category, ведь asiCal = "+asiCall);
-                System.out.println("--------------------");
-
-                assist1.setVisibility(View.INVISIBLE);
-                assist2.setVisibility(View.INVISIBLE);
-                assist3.setVisibility(View.INVISIBLE);
-                categoryAssist.setVisibility(View.VISIBLE);
-            }
-
-             */
-
 
 
             // если строчки уже есть
@@ -467,6 +439,7 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
             }
         }
 
+        sPref = getSharedPreferences(filename, MODE_PRIVATE);
         // для проверки после заполнения
         lastId = Integer.parseInt(sPref.getString("lastId", ""));
         System.out.println("после кода, lastId в fillData: " + lastId);
@@ -475,7 +448,7 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
     }
 
     public void addRow() {
-
+        sPref = getSharedPreferences(filename, MODE_PRIVATE);
         // для проверки, содержит ли файл число
         String lastIdString = sPref.getString("lastId", "");
 
@@ -563,6 +536,7 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
     public void deleteRow() {
         TableLayout stk = (TableLayout) findViewById(R.id.table);
         // узнаём lastId
+        sPref = getSharedPreferences(filename, MODE_PRIVATE);
         String last = sPref.getString("lastId", "");
         System.out.println("deleteRow : last " + last);
 
@@ -597,6 +571,11 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
     public void checkFileWords(){
         String text;
         //sPref = getSharedPreferences(filename, MODE_PRIVATE);
+    }
+
+    // отправляем данные на сервер
+    public void sendToServer() {
+
     }
 
     public void toCreate1(View v) {
