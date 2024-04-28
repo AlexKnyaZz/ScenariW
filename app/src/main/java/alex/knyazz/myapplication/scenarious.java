@@ -17,10 +17,14 @@
 
     package alex.knyazz.myapplication;
 
+    import android.annotation.SuppressLint;
     import android.app.Activity;
+    import android.content.Context;
     import android.content.Intent;
     import android.content.SharedPreferences;
+    import android.os.AsyncTask;
     import android.os.Bundle;
+    import android.util.Log;
     import android.view.Gravity;
     import android.view.View;
     import android.widget.Button;
@@ -33,16 +37,28 @@
 
     import androidx.core.content.ContextCompat;
 
+    import org.json.JSONArray;
+    import org.json.JSONException;
+
+    import java.io.BufferedReader;
     import java.io.File;
+    import java.io.IOException;
+    import java.io.InputStream;
+    import java.io.InputStreamReader;
+    import java.io.OutputStream;
+    import java.net.HttpURLConnection;
+    import java.net.URL;
+    import java.net.URLEncoder;
     import java.util.ArrayList;
     import java.util.HashSet;
+    import java.util.Set;
 
     public class scenarious extends Activity implements View.OnClickListener {
 
 
         private RelativeLayout authorisation, content_container, page_authorisation_ek1, frame_5;
         private View _bg__authorisation_ek2;
-        private ImageView shape_with_text, shape_with_text_ek2, shape_with_text_ek3, shape_with_scanerious, shape_with_text_ek4;
+        private ImageView updateMyFiles, uploadMyFiles, shape_with_text, shape_with_text_ek2, shape_with_text_ek3, shape_with_scanerious, shape_with_text_ek4;
         private Button Create, Return, delete, open, deleteAll;
         private TextView ___________________, __________________________________________________________________;
         private TableLayout table;
@@ -76,6 +92,8 @@
                 open.setOnClickListener(this);
                 deleteAll = (Button) findViewById(R.id.deleteAll);
                 deleteAll.setOnClickListener(this);
+                uploadMyFiles = (ImageView) findViewById(R.id.uploadMyFiles);
+                uploadMyFiles.setOnClickListener(this);
 
                 files(); // список всех файлов
                 fillTableWithFileData(); // наполнение таблицы данными из списка всех файлов
@@ -103,6 +121,11 @@
             Create.setOnClickListener(this);
             Return = (Button) findViewById(R.id.Return);
             Return.setOnClickListener(this);
+
+            updateMyFiles = (ImageView) findViewById(R.id.updateMyFiles);
+            updateMyFiles.setOnClickListener(this);
+
+
 
             //custom code goes here
         }
@@ -328,6 +351,131 @@
 
         }
 
+        @SuppressLint("StaticFieldLeak")
+        private void saveMyFilesData() {
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    try {
+                        // Чтение данных из shared preferences
+                        SharedPreferences sharedPreferences = getSharedPreferences("MyFiles", MODE_PRIVATE);
+                        Set<String> fileNamesSet = sharedPreferences.getStringSet("fileNames", new HashSet<String>());
+                        //String currentName = sharedPreferences.getString("current_name", "");
+
+                        // Создание URL сервера и подключение к нему
+                        URL url = new URL("http://scenariw.ru.swtest.ru/saveMyFilesData.php");
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                        // Получаем куки из SharedPreferences
+                        SharedPreferences sPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        String cookie = sPref.getString("Cookie", "");
+
+                        // Устанавливаем куки в заголовок запроса
+                        if (!cookie.isEmpty()) {
+                            urlConnection.setRequestProperty("Cookie", cookie);
+                        } else {
+                        }
+
+                        // Установка метода запроса
+                        urlConnection.setRequestMethod("POST");
+                        urlConnection.setDoOutput(true);
+
+                        // Формирование параметров запроса
+                        StringBuilder postData = new StringBuilder();
+                        //postData.append(URLEncoder.encode("username", "UTF-8")).append("=").append(URLEncoder.encode("your_username", "UTF-8")).append("&");
+                        //postData.append(URLEncoder.encode("current_scenario", "UTF-8")).append("=").append(URLEncoder.encode(currentName, "UTF-8")).append("&");
+                        for (String fileName : fileNamesSet) {
+                            postData.append(URLEncoder.encode("scenario_names[]", "UTF-8")).append("=").append(URLEncoder.encode(fileName, "UTF-8")).append("&");
+                        }
+
+                        // Отправка данных на сервер
+                        OutputStream os = urlConnection.getOutputStream();
+                        os.write(postData.toString().getBytes());
+                        os.flush();
+                        os.close();
+
+                        // Получение ответа от сервера
+                        InputStream inputStream = urlConnection.getInputStream();
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                        StringBuilder response = new StringBuilder();
+                        String inputLine;
+                        while ((inputLine = bufferedReader.readLine()) != null) {
+                            response.append(inputLine);
+                        }
+                        bufferedReader.close();
+                        inputStream.close();
+
+                        // Вывод ответа сервера (можно убрать в реальном приложении)
+                        Log.d("Response", "Response: " + response.toString());
+
+                        return null;
+                    } catch (IOException e) {
+                        Log.e("Error", "Error sending data to server: " + e.getMessage());
+                        return null;
+                    }
+                }
+            }.execute();
+        }
+
+        @SuppressLint("StaticFieldLeak")
+        private void loadMyFilesData() {
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    try {
+                        // Создание URL сервера и подключение к нему
+                        URL url = new URL("http://scenariw.ru.swtest.ru/getMyFilesData.php");
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                        // Получаем куки из SharedPreferences
+                        SharedPreferences sPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        String cookie = sPref.getString("Cookie", "");
+
+                        // Устанавливаем куки в заголовок запроса
+                        if (!cookie.isEmpty()) {
+                            urlConnection.setRequestProperty("Cookie", cookie);
+                        }
+
+                        // Установка метода запроса
+                        urlConnection.setRequestMethod("GET");
+
+                        // Получение ответа от сервера
+                        InputStream inputStream = urlConnection.getInputStream();
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                        StringBuilder response = new StringBuilder();
+                        String inputLine;
+                        while ((inputLine = bufferedReader.readLine()) != null) {
+                            response.append(inputLine);
+                        }
+                        bufferedReader.close();
+                        inputStream.close();
+
+                        // Обработка ответа сервера и сохранение данных в файл shared preferences
+                        SharedPreferences sharedPreferences = getSharedPreferences("MyFiles", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        Set<String> fileNamesSet = new HashSet<>();
+                        JSONArray jsonArray = new JSONArray(response.toString());
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            String fileName = jsonArray.getString(i);
+                            fileNamesSet.add(fileName);
+                        }
+                        editor.putStringSet("fileNames", fileNamesSet);
+                        editor.apply();
+
+                        return null;
+                    } catch (IOException | JSONException e) {
+                        Log.e("Error", "Error loading data from server: " + e.getMessage());
+                        return null;
+                    }
+                }
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    // Действия после загрузки данных (например, обновление пользовательского интерфейса)
+                    fillTableWithFileData();
+                }
+            }.execute();
+        }
 
         // обработчик кнопок
         @Override
@@ -346,6 +494,10 @@
             } else if (id == R.id.deleteAll) {
                 deleteAllFiles();
                 System.out.println("deleteAll");
+            } else if (id == R.id.uploadMyFiles) {
+                saveMyFilesData();
+            } else if (id == R.id.updateMyFiles) {
+                loadMyFilesData();
             } else { // при выборе файла из списка сценариев
                 clickNum += 1;
                 System.out.println(clickNum);
