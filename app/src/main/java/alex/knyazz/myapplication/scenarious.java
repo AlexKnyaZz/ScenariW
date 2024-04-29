@@ -385,8 +385,40 @@
                         //postData.append(URLEncoder.encode("username", "UTF-8")).append("=").append(URLEncoder.encode("your_username", "UTF-8")).append("&");
                         //postData.append(URLEncoder.encode("current_scenario", "UTF-8")).append("=").append(URLEncoder.encode(currentName, "UTF-8")).append("&");
                         for (String fileName : fileNamesSet) {
+                            SharedPreferences sPrefForData = getSharedPreferences(fileName, MODE_PRIVATE);
+                            String saved_type = sPrefForData.getString("saved_type", "");
+                            String saved_role = sPrefForData.getString("saved_role", "");
+                            String form = sPrefForData.getString("form", "");
+                            String rowsCount = sPrefForData.getString("rowsCount", "");
+                            String lastId = sPrefForData.getString("lastId", "");
+
+                            int last = Integer.parseInt(lastId);
+
                             postData.append(URLEncoder.encode("scenario_names[]", "UTF-8")).append("=").append(URLEncoder.encode(fileName, "UTF-8")).append("&");
+                            postData.append(URLEncoder.encode("saved_types[]", "UTF-8")).append("=").append(URLEncoder.encode(saved_type, "UTF-8")).append("&");
+                            postData.append(URLEncoder.encode("saved_roles[]", "UTF-8")).append("=").append(URLEncoder.encode(saved_role, "UTF-8")).append("&");
+                            postData.append(URLEncoder.encode("forms[]", "UTF-8")).append("=").append(URLEncoder.encode(form, "UTF-8")).append("&");
+                            postData.append(URLEncoder.encode("rowsCounts[]", "UTF-8")).append("=").append(URLEncoder.encode(rowsCount, "UTF-8")).append("&");
+                            postData.append(URLEncoder.encode("lastIds[]", "UTF-8")).append("=").append(URLEncoder.encode(lastId, "UTF-8")).append("&");
+
+                            // получаем данные
+                            for(int i = 0; i <= last; i++){
+                                String a_key = "a"+i;
+                                String b_key = "b"+i;
+
+                                postData.append(URLEncoder.encode("a_keys[]", "UTF-8")).append("=").append(URLEncoder.encode(a_key, "UTF-8")).append("&");
+                                postData.append(URLEncoder.encode("b_keys[]", "UTF-8")).append("=").append(URLEncoder.encode(b_key, "UTF-8")).append("&");
+
+
+                                String aText = sPrefForData.getString("a" + i, "");
+                                String bText = sPrefForData.getString("b" + i, "");
+
+                                postData.append(URLEncoder.encode("a_datas[]", "UTF-8")).append("=").append(URLEncoder.encode(aText, "UTF-8")).append("&");
+                                postData.append(URLEncoder.encode("b_datas[]", "UTF-8")).append("=").append(URLEncoder.encode(bText, "UTF-8")).append("&");
+                            }
                         }
+
+                        System.out.println(postData.toString());
 
                         // Отправка данных на сервер
                         OutputStream os = urlConnection.getOutputStream();
