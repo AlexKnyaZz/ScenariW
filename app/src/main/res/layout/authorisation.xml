@@ -238,6 +238,7 @@
 					android:layout_marginLeft="0dp"
 					android:layout_marginTop="504dp"
 					android:hint="@string/Password_string"
+					android:inputType="textPassword"
 
 					android:gravity="center"
 					android:layout_centerHorizontal="true"
