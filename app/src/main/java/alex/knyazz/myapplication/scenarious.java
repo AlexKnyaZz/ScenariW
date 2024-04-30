@@ -577,20 +577,39 @@ public class scenarious extends Activity implements View.OnClickListener {
 
                         // Получение значений из JSON-объекта
                         String scenarioName = jsonObject.getString("scenario_name");
-                        //String savedType = jsonObject.getString("saved_type");
+                        String savedType = jsonObject.getString("saved_type");
+                        String savedRole = jsonObject.getString("saved_role");
+                        String form = jsonObject.getString("form");
+                        String rowsCount = jsonObject.getString("rowsCount");
+                        String lastId = jsonObject.getString("lastId");
+                        String data = jsonObject.getString("data");
 
-                        // Обновляем список сценариев в MyFiles
-                        /*
                         System.out.println(scenarioName);
-                        SharedPreferences setPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
-                        SharedPreferences.Editor ed1 = setPref.edit();
+                        System.out.println(savedType);
+                        System.out.println(savedRole);
+                        System.out.println(form);
+                        System.out.println(rowsCount);
+                        System.out.println(lastId);
+                        System.out.println(data);
 
-                        fileNames.add(scenarioName);
-                        Set<String> fileNamesSet = new HashSet<>(fileNames);
-                        ed1.putStringSet("fileNames", fileNamesSet);
-                        ed1.apply();
 
-                         */
+                        data = data.substring(1, data.length() - 1); // Убираем квадратные скобки
+
+                        String[] pairs = data.split(", ");
+                        for (String pair : pairs) {
+                            String[] keyValuePairs = pair.split("&=\\$|=\\$=");
+
+                            if (keyValuePairs.length == 4) {
+                                String keyA = keyValuePairs[0];
+                                String valueA = keyValuePairs[1];
+                                String keyB = keyValuePairs[2];
+                                String valueB = keyValuePairs[3];
+
+                                System.out.println("Key A: " + keyA + ", Value A: " + valueA);
+                                System.out.println("Key B: " + keyB + ", Value B: " + valueB);
+                            }
+                        }
+                        System.out.println("-------------------");
                     }
 
 
