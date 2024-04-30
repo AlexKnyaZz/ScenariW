@@ -39,6 +39,7 @@ import androidx.core.content.ContextCompat;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -412,7 +413,7 @@ public class scenarious extends Activity implements View.OnClickListener {
                             String aText = sPrefForData.getString("a" + i, "");
                             String bText = sPrefForData.getString("b" + i, "");
 
-                            String data_ = a_key + "&=$" + aText + "=$=" + b_key + "&=$" + bText;
+                            String data_ = a_key + "&=$" + aText + "=$=" + b_key + "&=$" + bText + "=$=";
 
                             dataList.add(data_);
                             //postData.append(URLEncoder.encode("datas[]", "UTF-8")).append("=").append(URLEncoder.encode(data, "UTF-8")).append("&");
@@ -423,25 +424,6 @@ public class scenarious extends Activity implements View.OnClickListener {
                         String data = dataList.toString();
                         postData.append(URLEncoder.encode("datas[]", "UTF-8")).append("=").append(URLEncoder.encode(data, "UTF-8")).append("&");
 
-
-
-                        /*
-                        // получаем данные
-                        for(int i = 0; i <= last; i++){
-                            String a_key = "a"+i;
-                            String b_key = "b"+i;
-
-                            postData.append(URLEncoder.encode("a_keys[]", "UTF-8")).append("=").append(URLEncoder.encode(a_key, "UTF-8")).append("&");
-
-
-                            String aText = sPrefForData.getString("a" + i, "");
-                            String bText = sPrefForData.getString("b" + i, "");
-
-                            postData.append(URLEncoder.encode("a_datas[]", "UTF-8")).append("=").append(URLEncoder.encode(aText, "UTF-8")).append("&");
-                            postData.append(URLEncoder.encode("b_datas[]", "UTF-8")).append("=").append(URLEncoder.encode(bText, "UTF-8")).append("&");
-                        }
-
-                         */
                     }
 
                     System.out.println(postData.toString());
@@ -476,7 +458,7 @@ public class scenarious extends Activity implements View.OnClickListener {
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void loadMyFilesData() {
+    private void getMyFilesData() {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
@@ -508,29 +490,117 @@ public class scenarious extends Activity implements View.OnClickListener {
                     bufferedReader.close();
                     inputStream.close();
 
-                    // Обработка ответа сервера и сохранение данных в файл shared preferences
-                    SharedPreferences sharedPreferences = getSharedPreferences("MyFiles", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    Set<String> fileNamesSet = new HashSet<>();
+                    // Вывод ответа сервера (можно убрать в реальном приложении)
+                    Log.d("Response", "Response: " + response.toString());
+
+                    // Обработка полученных данных
+                    // В данном случае данные приходят в формате JSON, их нужно распарсить и обработать
+
                     JSONArray jsonArray = new JSONArray(response.toString());
+
+// Обход массива JSON-объектов
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        String fileName = jsonArray.getString(i);
-                        fileNamesSet.add(fileName);
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                        // Получение значений из JSON-объекта
+                        String scenarioName = jsonObject.getString("scenario_name");
+                        //String savedType = jsonObject.getString("saved_type");
+
+                        // Обновляем список сценариев в MyFiles
+                        System.out.println(scenarioName);
+                        SharedPreferences setPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
+                        SharedPreferences.Editor ed1 = setPref.edit();
+
+                        fileNames.add(scenarioName);
+                        Set<String> fileNamesSet = new HashSet<>(fileNames);
+                        ed1.putStringSet("fileNames", fileNamesSet);
+                        ed1.apply();
+                        // Далее вы можете использовать полученные значения для отображения в приложении или для других целей
                     }
-                    editor.putStringSet("fileNames", fileNamesSet);
-                    editor.apply();
+
 
                     return null;
-                } catch (IOException | JSONException e) {
-                    Log.e("Error", "Error loading data from server: " + e.getMessage());
+                } catch (IOException e) {
+                    Log.e("Error", "Error sending data to server: " + e.getMessage());
                     return null;
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
                 }
             }
+        }.execute();
+    }
 
+    @SuppressLint("StaticFieldLeak")
+    public void getFilenameData() {
+        new AsyncTask<Void, Void, Void>() {
             @Override
-            protected void onPostExecute(Void aVoid) {
-                // Действия после загрузки данных (например, обновление пользовательского интерфейса)
-                fillTableWithFileData();
+            protected Void doInBackground(Void... voids) {
+                try {
+                    // Создание URL сервера и подключение к нему
+                    URL url = new URL("http://scenariw.ru.swtest.ru/getFilenameData.php");
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                    // Получаем куки из SharedPreferences
+                    SharedPreferences sPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                    String cookie = sPref.getString("Cookie", "");
+
+                    // Устанавливаем куки в заголовок запроса
+                    if (!cookie.isEmpty()) {
+                        urlConnection.setRequestProperty("Cookie", cookie);
+                    }
+
+                    // Установка метода запроса
+                    urlConnection.setRequestMethod("GET");
+
+                    // Получение ответа от сервера
+                    InputStream inputStream = urlConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder response = new StringBuilder();
+                    String inputLine;
+                    while ((inputLine = bufferedReader.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    bufferedReader.close();
+                    inputStream.close();
+
+                    // Вывод ответа сервера (можно убрать в реальном приложении)
+                    Log.d("Response", "Response: " + response.toString());
+
+                    // Обработка полученных данных
+                    // В данном случае данные приходят в формате JSON, их нужно распарсить и обработать
+
+                    JSONArray jsonArray = new JSONArray(response.toString());
+
+// Обход массива JSON-объектов
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                        // Получение значений из JSON-объекта
+                        String scenarioName = jsonObject.getString("scenario_name");
+                        //String savedType = jsonObject.getString("saved_type");
+
+                        // Обновляем список сценариев в MyFiles
+                        /*
+                        System.out.println(scenarioName);
+                        SharedPreferences setPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
+                        SharedPreferences.Editor ed1 = setPref.edit();
+
+                        fileNames.add(scenarioName);
+                        Set<String> fileNamesSet = new HashSet<>(fileNames);
+                        ed1.putStringSet("fileNames", fileNamesSet);
+                        ed1.apply();
+
+                         */
+                    }
+
+
+                    return null;
+                } catch (IOException e) {
+                    Log.e("Error", "Error sending data to server: " + e.getMessage());
+                    return null;
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }.execute();
     }
@@ -555,7 +625,8 @@ public class scenarious extends Activity implements View.OnClickListener {
         } else if (id == R.id.uploadMyFiles) {
             saveMyFilesData();
         } else if (id == R.id.updateMyFiles) {
-            loadMyFilesData();
+            getMyFilesData();
+            getFilenameData();
         } else { // при выборе файла из списка сценариев
             clickNum += 1;
             System.out.println(clickNum);
