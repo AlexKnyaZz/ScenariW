@@ -164,12 +164,25 @@ public class scenarious extends Activity implements View.OnClickListener {
 
     // наполнение таблицы данными
     public void fillTableWithFileData() {
+
+
         // Клонируем существующие элементы
         TableLayout stk = (TableLayout) findViewById(R.id.table);
-        // обнуление всех созданных дубликатов //
-        if (stk.getChildCount() > 0) {
-            stk.removeAllViews();
+
+
+
+        try{
+            // обнуление всех созданных дубликатов //
+            if (stk.getChildCount() > 0) {
+                System.out.println("есть дочерние элементы");
+                stk.removeAllViews();
+            } else{System.out.println("нет дочерних элементов");}
+        }catch(Exception e){
+            System.out.println("Не удалось узнать количество");
         }
+
+        System.out.println("Выполняется заполнение таблицы");
+
         // вывод списка сценариев
         int countId = 0; // счётчик для установки id
         for (String fileName : fileNames) {
@@ -180,6 +193,9 @@ public class scenarious extends Activity implements View.OnClickListener {
             // Получаем значения по ключам
             String name = filePrefs.getString("saved_name", "");
             String type = filePrefs.getString("saved_type", "");
+
+            System.out.println(name + " "+type);
+
             // копируем строку таблицы
             TableRow clonedTableRow = new TableRow(this);
             // копируем первую ячейку
@@ -221,9 +237,14 @@ public class scenarious extends Activity implements View.OnClickListener {
         startActivity(intent);
     }
 
-    public void toReturn(View v) {
+    public void toReturn() {
         Intent intent = new Intent(scenarious.this, frame_3_activity.class);
         //System.out.println("succeeeeeeeeeeeeeeeeees");
+        startActivity(intent);
+    }
+
+    public void restartActivity(){
+        Intent intent = new Intent(scenarious.this, scenarious.class);
         startActivity(intent);
     }
 
@@ -571,6 +592,7 @@ public class scenarious extends Activity implements View.OnClickListener {
 
                     JSONArray jsonArray = new JSONArray(response.toString());
 
+
 // Обход массива JSON-объектов
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -583,6 +605,15 @@ public class scenarious extends Activity implements View.OnClickListener {
                         String rowsCount = jsonObject.getString("rowsCount");
                         String lastId = jsonObject.getString("lastId");
                         String data = jsonObject.getString("data");
+
+                        SharedPreferences shPref = getSharedPreferences(scenarioName, MODE_PRIVATE);
+                        SharedPreferences.Editor ed1 = shPref.edit();
+                        ed1.putString("saved_name", scenarioName);
+                        ed1.putString("saved_role", savedRole);
+                        ed1.putString("saved_type", savedType);
+                        ed1.putString("form", form);
+                        ed1.putString("rowsCount", rowsCount);
+                        ed1.putString("lastId", lastId);
 
                         System.out.println(scenarioName);
                         System.out.println(savedType);
@@ -605,12 +636,30 @@ public class scenarious extends Activity implements View.OnClickListener {
                                 String keyB = keyValuePairs[2];
                                 String valueB = keyValuePairs[3];
 
+                                ed1.putString(keyA, valueA);
+                                ed1.putString(keyB, valueB);
+
                                 System.out.println("Key A: " + keyA + ", Value A: " + valueA);
                                 System.out.println("Key B: " + keyB + ", Value B: " + valueB);
                             }
                         }
                         System.out.println("-------------------");
+                        ed1.commit();
+
                     }
+
+                    SharedPreferences ssPref = getSharedPreferences("MyFiles", MODE_PRIVATE);
+                    int ScenNum = 0;
+                    for(String filename : fileNames){
+                        ScenNum += 1;
+                    }
+
+                    SharedPreferences sharedPref = getSharedPreferences("ScenariousCount", MODE_PRIVATE);
+                    SharedPreferences.Editor ed2 = sharedPref.edit();
+
+
+                    ed2.putString("count: ", String.valueOf(ScenNum));
+                    ed2.commit();
 
 
                     return null;
@@ -631,7 +680,7 @@ public class scenarious extends Activity implements View.OnClickListener {
         if (id == R.id.Create) {
             toCreate1(v);
         } else if (id == R.id.Return) {
-            toReturn(v);
+            toReturn();
         } else if (id == R.id.delete) {
             deleteFile();
             clickNum = 0;
@@ -646,6 +695,9 @@ public class scenarious extends Activity implements View.OnClickListener {
         } else if (id == R.id.updateMyFiles) {
             getMyFilesData();
             getFilenameData();
+            //fillTableWithFileData();
+            //restartActivity();
+            toReturn();
         } else { // при выборе файла из списка сценариев
             clickNum += 1;
             System.out.println(clickNum);
