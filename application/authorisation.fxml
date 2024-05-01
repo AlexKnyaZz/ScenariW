@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <children>
+      <BorderPane prefHeight="640.0" prefWidth="1020.0" style="-fx-background-color: #fff;">
+         <left>
+            <Pane prefHeight="640.0" prefWidth="426.0" styleClass="linear-grad" stylesheets="@application.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox layoutX="47.0" layoutY="31.0" prefHeight="100.0" prefWidth="200.0" />
+                  <ImageView fitHeight="313.0" fitWidth="251.0" layoutX="82.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/svg-editor-image%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="btnForgot1" layoutX="133.0" layoutY="405.0" text="ScenariW" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="btnForgot11" layoutX="58.0" layoutY="451.0" prefHeight="35.0" prefWidth="309.0" text="Сценарии ваших игр созданы здесь" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane fx:id="pnSignUp" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <TextField fx:id="tfLogin1" alignment="CENTER" layoutX="97.0" layoutY="288.0" prefHeight="51.0" prefWidth="411.0" promptText="Логин">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="btnSignIn1" alignment="CENTER" layoutX="276.0" layoutY="368.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="220.0" styleClass="button1" stylesheets="@application.css" text="Продолжить">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="lbSignIn1" layoutX="94.0" layoutY="201.0" text="Регистрация" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="btnBack" fitHeight="42.0" fitWidth="46.0" layoutX="88.0" layoutY="87.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/back-svgrepo-com.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pnSignIn" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" StackPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="tfLogin" alignment="CENTER" layoutX="94.0" layoutY="195.0" prefHeight="51.0" prefWidth="411.0" promptText="Логин">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                        <PasswordField fx:id="tfPassword" alignment="CENTER" layoutX="94.0" layoutY="293.0" prefHeight="51.0" prefWidth="411.0" promptText="Пароль">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </PasswordField>
+                        <Button fx:id="btnSignIn" alignment="CENTER" layoutX="83.0" layoutY="387.0" mnemonicParsing="false" onAction="#signInButtonClicked" onTouchPressed="#toMain" prefHeight="51.0" prefWidth="220.0" styleClass="button1" stylesheets="@application.css" text="Войти" textFill="#9b63bf">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnSignUp" alignment="CENTER" layoutX="94.0" layoutY="507.0" mnemonicParsing="false" onAction="#signUp" prefHeight="51.0" prefWidth="412.0" styleClass="button2" stylesheets="@application.css" text="Зарегистрироваться">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="btnForgot" layoutX="325.0" layoutY="394.0" text="Забыли пароль?" textAlignment="CENTER" textFill="#9b63bf" underline="true">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbSignIn" layoutX="96.0" layoutY="97.0" text="Авторизация" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbSignIn2" layoutX="263.0" layoutY="160.0" text="Логин" textAlignment="CENTER" textFill="#9b63bf">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbSignIn21" layoutX="259.0" layoutY="258.0" text="Пароль" textAlignment="CENTER" textFill="#9b63bf">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="txtIncLog" fill="RED" layoutX="132.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Вы ввели неправильный логин" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txtIncPass" fill="RED" layoutX="132.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Вы ввели неправильный пароль" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
