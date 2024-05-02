@@ -18,11 +18,14 @@
 package alex.knyazz.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -31,10 +34,20 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class edit_page_1 extends Activity implements View.OnClickListener {
 
@@ -213,7 +226,6 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
             System.out.println("fillData : результат, rowsCount = " + rowsCount);
 
 
-
             // включаем подсказки ассистента
             // подксказка 1
             asiCall = 0;
@@ -308,6 +320,16 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
                             if (ageCategory == -1) { // если слова нет в бд, возрастная  категория этого слова = 0
                                 ageCategory = 0;
                             }
+
+                            String ageFrom = null;
+                            try {
+                                ageFrom = String.valueOf(new checkFileWords().execute(word).get());
+                            } catch (ExecutionException e) {
+                                throw new RuntimeException(e);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                            System.out.println(ageFrom);
 
                             System.out.println("Word: " + word + ", Age Category: " + ageCategory);
 
@@ -568,9 +590,70 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
         ed1.commit();
     }
 
-    public void checkFileWords(){
-        String text;
-        //sPref = getSharedPreferences(filename, MODE_PRIVATE);
+    public class checkFileWords extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+
+            String word = params[0];
+
+            try {
+
+                // Создаем URL сервера и подключаемся к нему
+                URL url = new URL("http://scenariw.ru.swtest.ru/searchWord.php");
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                // Устанавливаем метод запроса и параметры запроса
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setDoOutput(true);
+
+                // Формируем данные для отправки
+                String postData = "word=" + URLEncoder.encode(word, "UTF-8");
+
+                // Получаем куки из SharedPreferences
+                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                String cookie = sharedPreferences.getString("Cookie", "");
+
+                // Устанавливаем куки в заголовок запроса
+                if (!cookie.isEmpty()) {
+                    urlConnection.setRequestProperty("Cookie", cookie);
+                } else {
+                }
+
+                // Отправляем данные на сервер
+                OutputStream os = urlConnection.getOutputStream();
+                os.write(postData.getBytes());
+                os.flush();
+                os.close();
+
+                // Получаем ответ от сервера
+                InputStream inputStream = urlConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String response = bufferedReader.readLine();
+                bufferedReader.close();
+                inputStream.close();
+
+                System.out.println("|||||||||||| " + response);
+
+                // Возвращаем ответ сервера
+                return response;
+            } catch (IOException e) {
+                Log.e("Error", "Error sending data to server: " + e.getMessage());
+                return null;
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            //Log.d("AuthorisationActivity", "Ответ сервера: " + result);
+            Log.d("Response", "Response: " + result); // Добавляем вывод для отладки
+            if (result != null) {
+
+            } else {
+                // Ошибка при обработке ответа
+                Toast.makeText(edit_page_1.this, "Ошибка при обработке ответа", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 
     // отправляем данные на сервер

@@ -34,6 +34,7 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
@@ -474,6 +475,12 @@ public class scenarious extends Activity implements View.OnClickListener {
                     Log.e("Error", "Error sending data to server: " + e.getMessage());
                     return null;
                 }
+            }
+
+            @Override
+            protected void onPostExecute(Void result) {
+                super.onPostExecute(result);
+                Toast.makeText(scenarious.this, "Данные успешно выгружены", Toast.LENGTH_SHORT).show();
             }
         }.execute();
     }

@@ -1,4 +1,4 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -148,15 +148,16 @@
 
                 <TextView
                     android:id="@+id/___________________"
-                    android:layout_width="277.4dp"
-                    android:layout_height="44.4dp"
+                    android:layout_width="350dp"
+                    android:layout_height="75dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="59dp"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="-10dp"
                     android:gravity="center"
-                    android:text="@string/AppName_string"
+                    android:text="Программное решение для разработки сценариев
+компьютерных игр"
                     android:textColor="@color/purple_700"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
 
 
                 <!--
@@ -193,4 +194,4 @@
         </RelativeLayout>
 
     </ScrollView>
-</HorizontalScrollView>
+</RelativeLayout>

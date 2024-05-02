@@ -17,14 +17,14 @@
 
 package alex.knyazz.myapplication;
 
-	import android.app.Activity;
-	import android.content.Intent;
-	import android.os.Bundle;
-	import android.view.View;
-	import android.widget.Button;
-	import android.widget.ImageView;
-	import android.widget.RelativeLayout;
-	import android.widget.TextView;
+    import android.app.Activity;
+    import android.content.Intent;
+    import android.os.Bundle;
+    import android.view.View;
+    import android.widget.Button;
+    import android.widget.ImageView;
+    import android.widget.RelativeLayout;
+    import android.widget.TextView;
 
 	public class frame_3_activity extends Activity implements View.OnClickListener {
 
@@ -49,7 +49,6 @@ package alex.knyazz.myapplication;
 
 		frame_3 = (RelativeLayout) findViewById(R.id.frame_3);
 		content_container = (RelativeLayout) findViewById(R.id.content_container);
-		AppName = (TextView) findViewById(R.id.AppName);
 		shape_with_text_ek3 = (ImageView) findViewById(R.id.shape_with_text_ek3);
 		shape_with_text_ek4 = (ImageView) findViewById(R.id.shape_with_text_ek4);
 		textView = (TextView)  findViewById(R.id.textView);

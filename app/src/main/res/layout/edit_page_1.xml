@@ -1,4 +1,4 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <!--
@@ -324,6 +324,14 @@
                         android:visibility="invisible"
                         />
 
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="250dp"
+                        android:layout_marginTop="500dp"
+                        android:background="@drawable/roundstyle2"
+                        android:backgroundTint="@color/colorPrimaryDark"></ImageView>
+
                 </RelativeLayout>
 
 
@@ -331,4 +339,4 @@
         </RelativeLayout>
 
     </RelativeLayout>
-</HorizontalScrollView>
+</RelativeLayout>
