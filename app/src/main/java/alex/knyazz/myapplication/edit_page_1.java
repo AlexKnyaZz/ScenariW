@@ -47,7 +47,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class edit_page_1 extends Activity implements View.OnClickListener {
 
@@ -321,6 +320,7 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
                                 ageCategory = 0;
                             }
 
+                            /*
                             String ageFrom = null;
                             try {
                                 ageFrom = String.valueOf(new checkFileWords().execute(word).get());
@@ -330,6 +330,8 @@ public class edit_page_1 extends Activity implements View.OnClickListener {
                                 throw new RuntimeException(e);
                             }
                             System.out.println(ageFrom);
+                            
+                             */
 
                             System.out.println("Word: " + word + ", Age Category: " + ageCategory);
 

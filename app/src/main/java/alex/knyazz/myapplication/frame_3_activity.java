@@ -17,14 +17,14 @@
 
 package alex.knyazz.myapplication;
 
-    import android.app.Activity;
-    import android.content.Intent;
-    import android.os.Bundle;
-    import android.view.View;
-    import android.widget.Button;
-    import android.widget.ImageView;
-    import android.widget.RelativeLayout;
-    import android.widget.TextView;
+	import android.app.Activity;
+	import android.content.Intent;
+	import android.os.Bundle;
+	import android.view.View;
+	import android.widget.Button;
+	import android.widget.ImageView;
+	import android.widget.RelativeLayout;
+	import android.widget.TextView;
 
 	public class frame_3_activity extends Activity implements View.OnClickListener {
 
@@ -36,7 +36,7 @@ package alex.knyazz.myapplication;
 	private ImageView shape_with_text_ek3;
 	private ImageView shape_with_text_ek4;
 	private TextView textView;
-	private Button UserInfo;
+		private Button UserInfo, info;
 
 
 	private static int  WELCOME_TIMEOUT = 4000;
@@ -55,6 +55,8 @@ package alex.knyazz.myapplication;
 
 		UserInfo = (Button) findViewById(R.id.UserInfo);
 		UserInfo.setOnClickListener(this);
+		info = (Button) findViewById(R.id.info);
+		info.setOnClickListener(this);
 
 		//---------------------------------
 
@@ -83,8 +85,11 @@ package alex.knyazz.myapplication;
 			if (id == R.id.UserInfo) {
 				Intent intent = new Intent(frame_3_activity.this, personal_cab.class);
 				startActivity(intent);
+			} else if (id == R.id.info) {
+				Intent intent = new Intent(frame_3_activity.this, info_page.class);
+				startActivity(intent);
 			}
-	}
+		}
 }
 	
 	

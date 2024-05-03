@@ -1,0 +1,232 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/content_container"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="1.9dp"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+
+        <RelativeLayout
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <View
+                android:layout_width="380dp"
+                android:layout_height="790dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/_bg__authorisation_ek2_shape" />
+
+
+            <ImageView
+                android:src="@drawable/shape_with_text"
+                android:contentDescription="shape_with_text"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="380dp"
+                android:layout_height="790dp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_marginTop="50dp">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="378.4dp"
+                            android:layout_height="69.4dp"
+                            android:layout_centerHorizontal="true"
+
+                            android:gravity="center"
+                            android:text="Основная информация"
+                            android:textColor="#9b63bf"
+                            android:textSize="10pt"
+
+                            />
+
+                        <TextView
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+
+                            android:gravity="fill_horizontal"
+
+                            android:text="     Программное решение разработки
+сценариев компьютерных игр с проверкой на соответствие ФЗ №436 от 29.12.2010
+разработано с ценлью упрощения работы и удобства написания сценариев компьютерных
+игр путём автоматизации определения возрастной категории продукта в соответствии с
+ФЗ №436 от 29.12.2010."
+
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="378.4dp"
+                            android:layout_height="69.4dp"
+                            android:layout_centerHorizontal="true"
+
+                            android:gravity="center"
+                            android:text="Страница сценариев"
+                            android:textColor="#9b63bf"
+                            android:textSize="10pt"
+
+                            />
+
+                        <TextView
+
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+
+                            android:gravity="fill_horizontal"
+
+                            android:text="     На странице сценариев отображается всё, что создал
+пользователь данного программного решения. Доступны следующие действия
+со сценариями: 1. синхронизировать  с сервером (при нажатии на кнопку синхронизации пользователь
+получает данные с сервера; если данные отсутствуют, страница будет пустой, если данные есть -
+пользователь увидит всё, что создал), 2. локально удалить выбранный сценарий (предусмотрена
+возможность удалить и на сервере), 3. открыть выбранный сценарий, 4. локально удалить
+все имеющиеся сценарии (предусмотрена возможность удалить сценарии и на сервере),
+5. выгрузить сценарии на сервер (используется в двух случаях: 1. для выгрузки нового сценария,
+2. для обновления старых сценариев при внесении в них изменений), 6. создать новый сценарий."
+
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="378.4dp"
+                            android:layout_height="69.4dp"
+                            android:layout_centerHorizontal="true"
+
+                            android:gravity="center"
+                            android:text="Страница изменения сценариев"
+                            android:textColor="#9b63bf"
+                            android:textSize="10pt"
+
+                            />
+
+                        <TextView
+
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+
+                            android:gravity="fill_horizontal"
+
+                            android:text="     На странице изменения сценариев
+пользователь может: 1. добавлять новые строки таблицы, 2. удалять строки таблицы, 3. изменять текст
+в ячейках, 4. узнавать возрастную категорию на основе введённого текста, 5. влиять на контекст,
+по которому определяется возрастная категория, 6. открыть полный текст ФЗ №436 от 29.12.2010, чтобы
+удостовериться в правильности определениия возрастной категории."
+
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+
+                </ScrollView>
+
+            </RelativeLayout>
+
+
+            <!-- aaaaaaaaaaaaaaaaaaaaaaaa -->
+
+
+            <RelativeLayout
+                android:id="@+id/frame_5"
+                android:layout_marginTop="568dp"
+                android:layout_marginStart="43dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+
+                <Button
+                    android:id="@+id/btnBack"
+                    android:layout_width="289dp"
+                    android:layout_height="87dp"
+                    android:layout_centerHorizontal="true"
+
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/roundstyle2"
+                    android:backgroundTint="#9b63bf"
+                    android:gravity="center"
+
+                    android:text="@string/back"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/___________________"
+                android:layout_width="350dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="59dp"
+                android:layout_marginTop="-10dp"
+                android:gravity="center"
+                android:text="Программное решение для разработки сценариев
+компьютерных игр"
+                android:textColor="@color/purple_700"
+                android:textSize="16sp" />
+
+
+            <!--
+            <TextView
+                android:id="@+id/ivan293"
+                android:layout_width="68.4dp"
+                android:layout_height="26.4dp"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="434dp"
+                android:text="@string/ivan293_string"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+
+                android:textColor="@color/___________________________________________________________________color"
+                android:textSize="14sp" />
+                -->
+
+
+            <!--
+            <TextView android:id="@+id/________"
+                android:textSize="14sp"
+                android:textColor="@color/___________________________________________________________________color"
+                android:layout_marginLeft="162dp"
+                android:layout_marginTop="504dp"
+                android:layout_width="64.4dp"
+                android:layout_height="25.4dp"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:text="@string/_________string"
+                 />
+                 -->
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
