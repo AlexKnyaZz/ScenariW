@@ -633,7 +633,7 @@ public class scenarious extends Activity implements View.OnClickListener {
 
                         data = data.substring(1, data.length() - 1); // Убираем квадратные скобки
 
-                        String[] pairs = data.split(", ");
+                        String[] pairs = data.split("\\|");
                         for (String pair : pairs) {
                             String[] keyValuePairs = pair.split("&=\\$|=\\$=");
 

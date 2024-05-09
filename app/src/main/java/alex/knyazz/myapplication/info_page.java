@@ -20,13 +20,16 @@ package alex.knyazz.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class info_page extends Activity implements View.OnClickListener {
 
 
     private Button btnBack;
+    private TextView FZ;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,10 @@ public class info_page extends Activity implements View.OnClickListener {
 
         btnBack = (Button) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(this);
+
+        FZ = (TextView) findViewById(R.id.FZ);
+        FZ.setMovementMethod(LinkMovementMethod.getInstance());
+        FZ.setOnClickListener(this);
 
         //custom code goes here
 

@@ -39,7 +39,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="535dp"
                 android:layout_marginTop="50dp">
 
                 <ScrollView
@@ -156,11 +156,26 @@
 
             <RelativeLayout
                 android:id="@+id/frame_5"
-                android:layout_marginTop="568dp"
+                android:layout_marginTop="595dp"
                 android:layout_marginStart="43dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true">
+
+
+                <TextView
+                    android:id="@+id/FZ"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center"
+
+
+                    android:text="@string/FZ"
+                    android:textSize="18sp"
+
+                    android:textColor="#9b63bf" />
 
 
                 <Button
@@ -170,7 +185,7 @@
                     android:layout_centerHorizontal="true"
 
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
+                    android:layout_marginTop="40dp"
                     android:background="@drawable/roundstyle2"
                     android:backgroundTint="#9b63bf"
                     android:gravity="center"
