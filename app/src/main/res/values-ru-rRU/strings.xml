@@ -65,5 +65,5 @@
     <string name="stringLogOrEmail">Логин/Email</string>
     <string name="logOut">Выйти из аккаунта</string>
     <string name="userName">Имя пользователя</string>
-    <string name="FZ">Текст ФЗ №436 от 29.12.2010: <a href="https://normativ.kontur.ru/document?moduleId=1&amp;documentId=441004#h154">Открыть</a></string>
+    <string name="FZ">Текст ФЗ №436 от 29.12.2010: <a href="https://normativ.kontur.ru/document?moduleId=1&amp;documentId=441004#h153">Открыть</a></string>
 </resources>
